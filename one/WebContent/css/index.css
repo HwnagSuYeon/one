@@ -1,0 +1,556 @@
+/*---------section---------*/
+/*nav*/
+.section_wrap {
+	min-height: 1px;
+}
+
+.section_nav {
+	display: block;
+}
+
+.section_nav_wrap {
+	width: 100%;
+	margin: 40px auto 22px;
+	padding: 0px 20px;
+}
+
+.nav_menu {
+	display: flex;
+	max-width: 930px;
+	line-height: 30px;
+	font-size: 30px;
+	margin: 40px auto;
+}
+
+.menu_content {
+	min-height: 1px;
+}
+
+.recomend {
+	margin-left: 0;
+	position: relative;
+	color: black;
+	font-weight: bold;
+}
+
+.recomend:hover {
+	color: #f9c00c;
+}
+
+.area {
+	position: relative;
+	color: black;
+	font-weight: 300;
+	margin-left: 40px;
+}
+
+.area:hover {
+	color: #f9c00c;
+}
+
+.interest {
+	position: relative;
+	color: black;
+	font-weight: 300;
+	margin-left: 40px;
+}
+
+.interest:hover {
+	color: #f9c00c;
+}
+
+/*------메인컨텐츠 묶음------*/
+.main_wrap {
+	min-height: 1px;
+}
+
+.main_content {
+	display: flex;
+	align-content: flex-start;
+	width: 100%;
+	min-height: 1px;
+	flex-flow: column nowrap;
+	margin: 0px auto;
+	/*padding: 0px 20px;*/
+}
+
+/*캐러셀 기능*/
+.carousel {
+	margin-top: 30px;
+	width: 930px;
+	height: 372px;
+	margin: 0 auto;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.slide_img {
+	display: flex;
+	justify-content: center;
+}
+
+.carousel .item {
+	border-radius: 10px;
+	min-height: 280px;
+	/* Prevent carousel from being distorted if for some reason image doesn't load */
+}
+
+.carousel .item img {
+	border-radius: 10px;
+	margin: 0 auto; /* Align slide image horizontally center */
+}
+
+.bs-example {
+	border-radius: 10px;
+	margin: 20px;
+}
+
+.left .right {
+	border-radius: 10px;
+}
+
+.fa-chevron-right:before {
+	line-height: 372px;
+}
+
+.fa-chevron-left:before {
+	line-height: 372px;
+}
+
+/*캐러셀2*/
+.carousel {
+	margin-top: 30px;
+	width: 930px;
+	height: 372px;
+	margin: 0 auto;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.slide_img {
+	display: flex;
+	justify-content: center;
+}
+
+.carousel .item {
+	border-radius: 10px;
+	min-height: 280px;
+	/* Prevent carousel from being distorted if for some reason image doesn't load */
+}
+
+.carousel .item img {
+	border-radius: 10px;
+	margin: 0 auto; /* Align slide image horizontally center */
+}
+
+.bs-example {
+	border-radius: 10px;
+	margin: 20px;
+}
+
+.left .right {
+	border-radius: 10px;
+}
+
+.fa-chevron-right:before {
+	line-height: 372px;
+}
+
+.fa-chevron-left:before {
+	line-height: 372px;
+}
+
+/*--------------ONE's PICK--------------*/
+/*title*/
+.pick {
+	position: relative;
+	width: 100%;
+	min-height: 1px;
+}
+
+.pick_wrap {
+	position: relative;
+	display: flex;
+	min-height: 1px;
+	padding-bottom: 51px;
+	flex-flow: column nowrap;
+	margin-top: 20px;
+}
+
+.pick_title {
+	display: flex;
+	-webkit-box-pack: justify;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	line-height: 18px;
+	font-size: 14px;
+}
+
+.main_title {
+	display: inline-flex;
+	/*-webkit-box-align: center;*/
+	font-weight: bold;
+	color: black;
+	font-size: inherit;
+	margin-right: 8px;
+}
+
+.side_title {
+	margin-left: 20px;
+	color: black;
+}
+
+/*content*/
+.pick_content {
+	display: flex;
+	min-height: 1px;
+	/*flex-flow: row wrap;*/
+	justify-content: space-between;
+}
+
+.pick_content>* {
+	margin-right: 10px;
+	width: calc(25% -7.5px);
+	margin-bottom: 31px;
+}
+
+.content_card {
+	background-color: white;
+	min-height: 1px;
+	flex-flow: column nowrap;
+	width: 225px;
+	height: 304px;
+	display: inline-block;
+}
+
+.content_anker {
+	min-height: 1px;
+}
+
+.anker_wrap {
+	/*overflow: hidden;*/
+	
+}
+
+.content_img_wrap {
+	position: relative;
+	min-height: 1px;
+}
+
+.heart_wrap {
+	position: absolute;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: space-between;
+	z-index: 1;
+	padding: 10px;
+}
+
+.spot_name {
+	height: 10px;
+	color: white;
+	font-size: 10px;
+	font-weight: 500;
+	line-height: 10px;
+	text-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
+	margin: 3px 0px 0px 2px;
+}
+
+.heart {
+	width: 24px;
+	height: 24px;
+	line-height: normal;
+	background-color: transparent;
+	text-align: center;
+	cursor: pointer;
+	font-size: 14px;
+	padding: 0px;
+	border-radius: 5px;
+}
+
+.heart>i {
+	color: white;
+	padding-bottom: 6px;
+	font-size: 15px;
+	text-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
+}
+
+.content_img {
+	min-height: 1px;
+	width: 225px;
+	height: 168px;
+	border-radius: 5px;
+	position: relative;
+}
+
+.content_img>img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+	/*background-size: cover;*/
+}
+
+.small_title {
+	margin-top: 14px;
+	font-size: 12px;
+	height: 14px;
+	text-overflow: ellipsis;
+	line-height: 14px;
+	color: rgb(155, 155, 155);
+	overflow: hidden;
+}
+
+.big_title {
+	margin-top: 10px;
+	height: auto;
+	/*max-height: 20px;*/
+	font-size: 14px;
+	/*word-break: keep-all;*/
+	font-weight: 500;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	letter-spacing: -0.5px;
+}
+
+.price_wrap {
+	margin-top: 14px;
+	line-height: 14px;
+	height: 14px;
+}
+
+.price {
+	font-size: 14px;
+	font-weight: 900;
+}
+
+.star_score {
+	margin-top: 14px;
+	display: flex;
+	font-size: 11px;
+	color: rgb(187, 187, 187);
+}
+
+.star_wrap {
+	height: 16px;
+}
+
+.star_wrap>i {
+	color: #f9c00c;
+	font-size: 12px;
+}
+
+/*---------------매거진---------------*/
+.magazine_wrap {
+	display: flex;
+	min-height: 1px;
+}
+
+.magazine_card {
+	margin-right: 10px;
+}
+
+.magazine_content {
+	width: 301px;
+	height: 238px;
+	position: relative;
+}
+
+.magazine_content>img {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left:
+}
+
+.magazine_text {
+	display: flex;
+	line-height: 12px;
+	background-color: white;
+	font-size: 12px;
+	flex-flow: column nowrap;
+	padding: 20px;
+	border-radius: inherit;
+}
+
+.magazine_title {
+	margin-bottom: 10px;
+	height: 29px;
+	line-height: normal;
+	font-size: 20px;
+	font-weight: bold;
+	width: 238px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.magazine_tag {
+	line-height: 12px;
+	font-size: 12px;
+}
+
+/*---------------more content---------------*/
+.more_class {
+	padding: 40px 0px;
+	width: 930px;
+}
+
+.more_title {
+	font-size: 18px;
+	font-weight: bold;
+	color: black;
+	margin-bottom: 30px;
+}
+
+.more_wrap {
+	display: flex;
+	justify-content: space-between;
+	/* flex-wrap: wrap; */
+	/*overflow: hidden;*/
+	margin: 0px -10px;
+}
+
+.more_wrap>* {
+	flex-grow: 1;
+	flex-shrink: 0;
+	flex-basis: 48%;
+	min-width: 470px;
+	display: flex;
+	border-width: 10px;
+	border-style: solid;
+	border-color: white;
+	border-image: initial;
+}
+
+.more_box_content {
+	background-color: #f9c00c;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 213px;
+	border-radius: 5px;
+	padding: 30px 30px 0;
+}
+
+.content_inner {
+	color: white;
+	font-size: 42px;
+	line-height: 52px;
+	font-weight: 300;
+	padding: 10px;
+	letter-spacing: -1px;
+}
+
+.men_wrap {
+	height: 183px;
+	width: 177px;
+}
+
+.men {
+	height: 100%;
+}
+
+.women {
+	height: 100%;
+}
+
+/*---------------app banner---------------*/
+.sns_follow {
+	margin-top: 70px;
+	position: relative;
+	width: 100%;
+}
+
+.follow_wrap {
+	margin-bottom: 70px;
+	width: 100%;
+	/*overflow: hidden;*/
+}
+
+.sns_img {
+	width: 930px;
+	height: 120px;
+}
+
+.sns_img>a>img {
+	border-radius: 5px;
+}
+
+/*---------------app banner---------------*/
+.one_app {
+	background-image: linear-gradient(282deg, rgb(253, 217, 102),
+		rgb(249, 192, 12));
+	height: 280px;
+}
+
+.app_wrap {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between;
+	width: 100%;
+	height: 280px;
+	max-width: 930px;
+	position: relative;
+	margin: 0px auto;
+	padding: 20px 50px 0px;
+}
+
+.app_content {
+	color: white;
+	font-size: 40px;
+	font-weight: bold;
+	word-break: keep-all;
+	position: relative;
+	z-index: 10;
+	margin: 32px 0px;
+}
+
+.app_btn {
+	margin-top: 26px;
+	display: flex;
+}
+
+.app_btn>* {
+	margin-right: 10px;
+}
+
+.a_btn {
+	display: block;
+	letter-spacing: 0.5px;
+	width: 160px;
+	line-height: normal;
+	background-color: transparent;
+	text-align: center;
+	cursor: pointer;
+	color: white;
+	font-size: 14px;
+	padding: 0px 13px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: white;
+	border-image: initial;
+	border-radius: 5px;
+}
+
+.app_btn>:last-child {
+	margin-right: 0px;
+}
+
+.app_img_wrap {
+	position: absolute;
+	margin-top: 22px;
+	width: 356px;
+	height: 259.22px;
+	bottom: -28px;
+	left: 477px;
+}
+
+.app_img {
+	width: 100%;
+}

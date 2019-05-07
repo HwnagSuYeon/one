@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.one.mybatis.SHSMapper.xml">
+	<select id="bestList" resultType="com.one.dto.ProductDTO">
+		<!-- resultType=DB에서 받아오는 타입. 경로문제때문에 현업에서는 앨리어스대신 경로 그대로를 쓴다. -->
+		<![CDATA[
+			SELECT *
+			FROM (SELECT * FROM tbl_product
+			ORDER BY p_like DESC)
+			WHERE ROWNUM <=4
+		]]>
+	</select>
+	<select id="newList" resultType="com.one.dto.ProductDTO">
+		<![CDATA[
+			SELECT *
+			FROM (SELECT * FROM tbl_product
+			ORDER BY p_indate DESC)
+			WHERE ROWNUM <=4
+		]]>
+	</select>
+</mapper>
