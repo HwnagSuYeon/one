@@ -1,0 +1,71 @@
+-- ONEforME project Dummy DATA
+
+-- 상품 시퀀스 생성
+DROP SEQUENCE seq_product;
+CREATE SEQUENCE seq_product
+START WITH 1
+INCREMENT BY 1
+NOCYCLE;
+
+-- 상품 테이블 생성
+DROP TABLE tbl_product;
+CREATE TABLE tbl_product(
+p_code VARCHAR2(5) PRIMARY KEY,
+p_type VARCHAR2(50) NOT NULL,
+p_sidename VARCHAR2(100) NOT NULL,
+p_name VARCHAR2(100) NOT NULL,
+p_price NUMBER NOT NULL,
+p_img VARCHAR2(100),
+p_count NUMBER DEFAULT 0,
+p_like NUMBER DEFAULT 0,
+p_indate DATE DEFAULT SYSDATE
+);
+SELECT * FROM tbl_product;
+DESC tbl_product;
+
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '추천', '조명에따라 달라지는 분위기', '나만의 조명 만들기', 60000, 'pick4.jpg', 100, 120);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '추천', '오늘부터 나도 사진작가', '도시의 야경을 담는 사진클래스', 45000, 'pick2.jpg', 80, 200);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '추천', '내추럴한 주방 만들기', '우드 도마 만들기', 30000, 'pick3.jpg', 50, 80);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '추천', '퇴근후 소소한 취미', '도담도담 프랑스자수', 60000, 'pick1.jpg', 50, 171);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '추천', '고고비치 무제한으로 즐기자', '서핑 시즌권 특가!', 200000, 'pick5.png', 20, 18);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '추천', '멋지고 이쁘게 변신해요!' ,'남녀 모두 퍼스널컬러와 메이크업으로', 50000, 'pick6.jpg', 40, 25);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '추천', '삼성동 코엑스 쿠킹 스튜디오에서 배워요!','프리미엄 한식 클래스+복순도가 막걸리', 89000, 'pick7.jpg', 100, 87);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '추천', '머릿속으로 맴돌던 것들을 입으로!', '[영어회화]스스로 영어 회화 습관 들이기', 55000, 'pick8.png', 80, 57);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '취미', '사는 것보다 예쁜 내가만든 액세서리','[특가]나만의 디자인 액세서리 만들기', 24500, 'price1.png', 50, 24);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '취미', '충정로역 힐링플레이스', '[특가]초롱화실:유화원데이크래스', 49000, 'price2.jpg', 25, 20);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '취미', '초보자도 환영! 체형교정에 최고:)', '[특가]체형교정 4주 필라테스/요가', 14000, 'price3.jpg', 25, 20);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '취미', '특별한 취미 원데이클래스','[특가]원데이 1곡 완성 피아노(예약완료)', 20000, 'price4.png', 70, 55);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '여행', '조선에 당도한 것을 환영하오', '[서울]5대 궁궐 투어-창경궁', 20000, 'trip1.jpg', 100, 84);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '여행', '신나는 음악과 볼링을 동시에 즐긴다!', '[부산 수영]더 레드락 볼링펍', 3000, 'trip2.jpg', 80, 25);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '여행', '한양도성 이야기 듣고 자박자박 순성하세', '해설사 붕붕과 한양도성 순성하기', 20000, 'trip3.jpg', 80, 50);
+INSERT INTO tbl_product(p_code, p_type, p_sidename, p_name, p_price, p_img, p_count, p_like)
+VALUES(seq_product.NEXTVAL, '여행', '인생사진과 함께 예쁘고 맛있는 요리를', '제주도에서 특별한 셀프쿠킹', 24500, 'trip4.jpg', 120, 112);
+
+-- 좋아요 수가 제일 높은 4개만 추출(lownum기능 사용)
+SELECT * 
+FROM (SELECT * FROM tbl_product
+      ORDER BY p_like DESC)
+WHERE ROWNUM <=4;
+
+-- 신상품(새로나온 상품) 4건 추출
+SELECT * 
+FROM (SELECT * FROM tbl_product
+      ORDER BY p_indate DESC)
+WHERE ROWNUM <=4;
+
+COMMIT;
