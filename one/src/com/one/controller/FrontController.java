@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.one.action.Action;
 import com.one.action.ActionForward;
+import com.one.action.ConstractAction;
+import com.one.action.IdCheckAction;
 import com.one.action.IndexAction;
+import com.one.action.JoinAction;
 
 
 
@@ -28,6 +31,7 @@ public class FrontController extends HttpServlet {
 			
 			Action action = null;
 			ActionForward forward = null; 
+			
 			String uri = request.getRequestURI();
 			String ctx = request.getContextPath();
 			String command = uri.substring(ctx.length());
@@ -35,6 +39,15 @@ public class FrontController extends HttpServlet {
 			
 			if(command.equals("/index.one")) {
 				action = new IndexAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/join.one")){
+				action = new JoinAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/constract.one")){
+				action = new ConstractAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/idCheck.one")){
+				action = new IdCheckAction();
 				forward = action.excute(request, response);
 			}
 			

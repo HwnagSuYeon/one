@@ -66,13 +66,14 @@
 			<!-- header_nav -->
 			<nav>
 				<div class="header_nav">
-					<a href="one_join.html" class="nav_wrap">
+					<a href="${path}/join.one" class="nav_wrap">
 						<div style="display: inline-block;">
 							<div class="nav_wrap_content">
 								<span>회원가입</span>
 							</div>
 						</div>
-					</a> <span class="nav_bar"></span> <a href="#" class="nav_wrap">
+					</a>
+					<span class="nav_bar"></span> <a href="#" class="nav_wrap">
 						<div style="display: inline-block;">
 							<div class="nav_wrap_content">
 								<span class="open_modal">로그인</span>

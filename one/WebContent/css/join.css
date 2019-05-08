@@ -1,0 +1,157 @@
+/*-------------회원가입-------------*/
+.main_wrap {
+	display: flex;
+	align-content: flex-start;
+	max-width: 970px;
+	width: 100%;
+	min-height: 1px;
+	flex-flow: column nowrap;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+.main_position {
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: auto;
+	align-self: center;
+	display: flex;
+	max-width: 370px;
+	line-height: 13px;
+	font-size: 13px;
+	text-align: center;
+	flex-flow: column nowrap;
+	padding: 40px 40px 60px;
+}
+.title {
+	width: 100%;
+	line-height: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+	margin: 40px 0px 50px;
+}
+
+
+form {
+	display: block;
+	margin-top: 0em;
+}
+
+/*이메일 입력부*/
+.content_wrap {
+	position: relative;
+	display: inline-block;
+	width: 290px;
+	height: 60px;
+	padding-left: 0px;
+}
+.content {
+	display: flex;
+	position: relative;
+	margin-bottom: 10px;
+	width: 290px;
+	height: 40px;
+	border-bottom: 1.3px solid rgb(238,238,238);
+	transition: 0.3s ease 0s;
+}
+.input_val {
+	width: 270px;
+	height: 12px;
+	line-height: 12px;
+	font-size: 12px;
+	padding: 14px 0px;
+	outline: none;
+}
+.margin {
+	width: 290px;
+	height: 10px;
+	line-height: 10px;
+	color: rgb(238,238,238);
+	text-align: left;
+}
+
+.form > button {
+	margin-top: 10px;
+}
+
+.join_btn {
+	width: 290px;
+	height: 50px;
+	line-height: 13px;
+	background-color: rgb(221,221,221);
+	text-align: center;
+	cursor: not-allowed;
+	color: white;
+	font-size: 13px;
+	padding: 0px 13px;
+	border-radius: 5px;
+}
+.post_find{
+	display: inline-block;
+	height: 25px;
+	width: 130px;
+	margin-top: 7px;
+	font-size: 11px;
+	border-radius: 4px;
+	color: white;
+	line-height: 23px;
+}
+.post_find:hover {
+	background-color: #f9c00c;
+}
+
+
+/*-------------약관동의-------------*/
+.agree_all {
+	width: 290px;
+	line-height: 18px;
+	color: rgb(85,85,85);
+	text-align: left;
+	word-break: keep-all;
+	font-size: 10px;
+	padding: 20px 0px;
+}
+.check_label {
+	flex: 1.5;
+	position: relative;
+	display: inline-block;
+	line-height: 18px;
+	cursor: pointer;
+	margin-right: 10px;
+	width: 19px;
+	height: 19px;
+	text-align: center;
+	background-image: url(../images/ck_off.png);
+	background-size: cover;
+}
+.ck_content_wrap {
+	flex: 8.5;
+}
+.agree_wrap input:checked +label {
+	background-image: url(../images/ck_on.png);
+}
+.ck_box {
+	position: relative;
+	width: 0;
+	height: 0;
+	opacity: 0;
+}
+.ck_anker {
+	text-decoration: underline;
+}
+
+
+
+.agree_all {
+	width: 290px;
+	line-height: 18px;
+	text-align: left;
+	font-size: 10px;
+	padding: 20px 0;
+}
+.agree_wrap {
+	display: flex;
+}
+.ck_small_text {
+	margin-top: 15px;
+}

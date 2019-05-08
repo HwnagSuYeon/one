@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!-- jsp는 인클루드로 가져와야함 -->
+<%@ include file="include/header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +13,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- jsp는 인클루드로 가져와야함 -->
-	<%@ include file="include/header.jsp"%>
 	<section class="section_wrap">
 		<nav class="section_nav">
 			<div class="section_nav_wrap">
