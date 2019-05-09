@@ -19,7 +19,6 @@ public class ProductDAO {
 		return instance;
 	}
 	
-	
 	int result = 0;
 	
 	public List<ProductDTO> bestList() {

@@ -155,3 +155,10 @@ form {
 .ck_small_text {
 	margin-top: 15px;
 }
+
+#err_msg {
+	display: block;
+	text-align: right;
+	color: tomato;
+	font-size: 12px;
+}

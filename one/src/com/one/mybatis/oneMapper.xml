@@ -20,4 +20,9 @@
 			WHERE ROWNUM <=4
 		]]>
 	</select>
+	<select id="idCheck" parameterType="String" resultType="String">
+	<!-- DB에서 받아오는 id값은 1개이기때문에 반환타입(result type)은 String -->
+		SELECT id FROM tbl_member
+		WHERE id = #{id}
+	</select>
 </mapper>
