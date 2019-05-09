@@ -69,3 +69,36 @@ FROM (SELECT * FROM tbl_product
 WHERE ROWNUM <=4;
 
 COMMIT;
+
+
+-- member table create
+DROP TABLE tbl_member;
+CREATE TABLE tbl_member(
+    id VARCHAR2(30) PRIMARY KEY,
+    pw VARCHAR2(30) NOT NULL,
+    name VARCHAR2(30) NOT NULL,
+    phone VARCHAR2(30) NOT NULL,
+    zipcode VARCHAR2(20) NOT NULL,
+    addr1 VARCHAR2(200) NOT NULL,
+    addr2 VARCHAR2(200) NOT NULL,
+    regdate DATE DEFAULT SYSDATE
+);
+SELECT * FROM tbl_member;
+
+-- 생일과 같은 컬럼을 생성할 때는 다음과 같이 쓴다
+-- birth_year NUMBER(4, 0)
+-- birth_month NUMBER(2, 0)
+-- birth_day NUMBER(2, 0)
+-- 위에서 괄호 안에 들어가는 숫자중 앞은 자릿수를, 0은 소숫점이 오지 못함을 의미.
+    
+-- 회원 정보 입력
+INSERT INTO tbl_member(id, pw, name, phone, zipcode, addr1, addr2)
+VALUES('user01', '1234', 'user1', '01012345678', '123456', '광주광역시 북구 연제동', '햇님아파트 105동 101호');
+INSERT INTO tbl_member(id, pw, name, phone, zipcode, addr1, addr2)
+VALUES('user02', '1234', 'user2', '01045678945', '456789', '대전광역시 동구 가양1동', '전자빌딩 7층 김해상사');
+INSERT INTO tbl_member(id, pw, name, phone, zipcode, addr1, addr2)
+VALUES('user03', '1234', 'user3', '01012345678', '741852', '서울특별시 구로구 가리봉동', '달님오피스텔 4동 1003호');
+    
+COMMIT;
+
+DESC tbl_member;
