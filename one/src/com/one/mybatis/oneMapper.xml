@@ -20,9 +20,14 @@
 			WHERE ROWNUM <=4
 		]]>
 	</select>
+	<!-- 21. 매개변수로 전달받은 id값을 sql문에 바인딩 변수로 넣고 sql문 실행(DB로 이동) -->
 	<select id="idCheck" parameterType="String" resultType="String">
 	<!-- DB에서 받아오는 id값은 1개이기때문에 반환타입(result type)은 String -->
 		SELECT id FROM tbl_member
 		WHERE id = #{id}
 	</select>
+	<insert id="memInsert" parameterType="com.one.dto.MemberDTO">
+		INSERT INTO tbl_member(id, pw, name, phone, zipcode, addr1, addr2)
+		VALUES(#{id}, #{pw}, #{name}, #{phone}, #{zipcode}, #{addr1}, #{addr2})
+	</insert>
 </mapper>

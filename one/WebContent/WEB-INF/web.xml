@@ -10,10 +10,15 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
+  	<!-- 12.url이 *.one으로 끝나는 경우 이동하는 FrontController를 정의 -->
+  	<!-- 결론:url이 *.one으로 끝나면 "com.one.controller.FrontController"로 이동 -->
   	<servlet-name>FrontController</servlet-name>
   	<servlet-class>com.one.controller.FrontController</servlet-class>
   </servlet>
   <servlet-mapping>
+  	<!-- 11. url의 끝부분이.one으로 끝나면 FrontController로 이동
+  			 url: idCheck.one -> FrontController로 이동 
+  			 FrontController가 어디있는지 몰라! 위에를 보면 어디로 가야하는지 알아! -->
   	<servlet-name>FrontController</servlet-name>
   	<url-pattern>*.one</url-pattern>
   </servlet-mapping>

@@ -15,6 +15,7 @@ import com.one.action.ConstractAction;
 import com.one.action.IdCheckAction;
 import com.one.action.IndexAction;
 import com.one.action.JoinAction;
+import com.one.action.MemberPlayAction;
 
 
 
@@ -31,12 +32,19 @@ public class FrontController extends HttpServlet {
 			
 			Action action = null;
 			ActionForward forward = null; 
-			
+			//13. uri와 ctx를 빼서 command생성
+			//	    실행:/one/idCheck.one
+			//	    -/one
+			//--------------------------
+			//		=/idCheck.one >> command
 			String uri = request.getRequestURI();
 			String ctx = request.getContextPath();
 			String command = uri.substring(ctx.length());
 			System.out.println("페이지 이동>>>"+command);
 			
+			
+			// 14. 생성된 command 조건에 맞는 if문 실행
+			// 	   command = /idCheck.one
 			if(command.equals("/index.one")) {
 				action = new IndexAction();
 				forward = action.excute(request, response);
@@ -47,7 +55,16 @@ public class FrontController extends HttpServlet {
 				action = new ConstractAction();
 				forward = action.excute(request, response);
 			} else if (command.equals("/idCheck.one")){
+				// 15. IdCheckAction 클래스 객체 생성
+				//		결과물: action인스턴스
+				//		action 인스턴스를 활용하여 excute() 메서드 실행
+				//		매개변수로 Controller의 request와 response를 전송
+				//		이동: IdCheckAction클래스의 excute()로 이동!
 				action = new IdCheckAction();
+				forward = action.excute(request, response);
+			}
+			else if (command.equals("/memberPlay.one")){
+				action = new MemberPlayAction();
 				forward = action.excute(request, response);
 			}
 			
