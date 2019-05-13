@@ -212,37 +212,13 @@
 			});
 			
 			$('.email_val').blur(function () {
-				var id = $.trim($('.email_val').val());
-				var pw = $.trim($('.password_val').val());
-				
-				var regEmpty = /\s/g;
-				if (id==null||id.length == 0) {
-					$('.modal_err_msg').text('필수정보 입니다')
-								 .css('display','block');
-					return false;
-				} else if (id.match(regEmpty)){
-					$('.modal_err_msg').text('공백없이 입력해주세요')
-					 			 .css('display','block');
-					return false;
-				}
-				
-				if (pw==null||pw.length == 0) {
-					$('.modal_err_msg').text('필수정보 입니다')
-								 .css('display','block');
-					return false;
-				} else if (pw.match(regEmpty)){
-					$('.modal_err_msg').text('공백없이 입력해주세요')
-					 			 .css('display','block');
-					return false;
-				}
-				$(".login_btn").css('cursor','pointer')
-				   .css("background","#f9c00c")
-				   .attr("disabled",false);
-				$('.modal_err_msg').blur(function () {
-					$(this).css('display','none');
-				});
+				login_btn_color();
 			});
 			$('.password_val').blur(function () {
+				login_btn_color();
+			});
+			
+			function login_btn_color() {
 				var id = $.trim($('.email_val').val());
 				var pw = $.trim($('.password_val').val());
 				
@@ -270,10 +246,8 @@
 				$(".login_btn").css('cursor','pointer')
 				   .css("background","#f9c00c")
 				   .attr("disabled",false);
-				$('.modal_err_msg').blur(function () {
-					$(this).css('display','none');
-				});
-			});
+				$('.modal_err_msg').css('display','none');
+			}
 
 			// 모달창 열고닫고
 			$('.open_modal').click(function(){
