@@ -30,4 +30,9 @@
 		INSERT INTO tbl_member(id, pw, name, phone, zipcode, addr1, addr2)
 		VALUES(#{id}, #{pw}, #{name}, #{phone}, #{zipcode}, #{addr1}, #{addr2})
 	</insert>
+	
+	<select id="loginCheck" parameterType="com.one.dto.MemberDTO" resultType="com.one.dto.MemberDTO">
+		SELECT * FROM tbl_member
+		WHERE id = #{id} AND pw = #{pw}
+	</select>
 </mapper>

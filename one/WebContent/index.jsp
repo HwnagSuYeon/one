@@ -18,8 +18,8 @@
 			<div class="section_nav_wrap">
 				<div class="nav_menu">
 					<a href="#" class="menu_content"><span class="recomend">추천</span></a>
-					<a href="#" class="menu_content"><span class="area">취미</span></a> <a
-						href="#" class="menu_content"><span class="interest">여행</span></a>
+					<a href="#" class="menu_content"><span class="area">취미</span></a>
+					<a href="#" class="menu_content"><span class="interest">여행</span></a>
 				</div>
 			</div>
 		</nav>

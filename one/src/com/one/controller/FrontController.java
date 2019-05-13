@@ -15,6 +15,8 @@ import com.one.action.ConstractAction;
 import com.one.action.IdCheckAction;
 import com.one.action.IndexAction;
 import com.one.action.JoinAction;
+import com.one.action.LogOutAction;
+import com.one.action.LoginAjaxAction;
 import com.one.action.MemberPlayAction;
 
 
@@ -62,9 +64,14 @@ public class FrontController extends HttpServlet {
 				//		이동: IdCheckAction클래스의 excute()로 이동!
 				action = new IdCheckAction();
 				forward = action.excute(request, response);
-			}
-			else if (command.equals("/memberPlay.one")){
+			} else if (command.equals("/memberPlay.one")){
 				action = new MemberPlayAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/login.one")){
+				action = new LoginAjaxAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/logOut.one")){
+				action = new LogOutAction();
 				forward = action.excute(request, response);
 			}
 			

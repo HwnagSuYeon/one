@@ -1,0 +1,286 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+ul, li { list-style: none; }
+a {
+	color: inherit;
+	text-decoration: none;
+}
+button {
+	border: none;
+	list-style: none;
+	background-color: none; 
+}
+input {
+	border: none;
+	display: block;
+}
+form {
+	width: 290px;
+}
+input {
+	margin: 0;
+}
+
+
+/*-------------회원가입-------------*/
+.main_wrap {
+	display: flex;
+	align-content: flex-start;
+	max-width: 970px;
+	width: 100%;
+	min-height: 1px;
+	flex-flow: column nowrap;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+.main_position {
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: auto;
+	align-self: center;
+	display: flex;
+	max-width: 370px;
+	line-height: 13px;
+	font-size: 13px;
+	text-align: center;
+	flex-flow: column nowrap;
+	padding: 40px 40px 60px;
+}
+.title {
+	width: 100%;
+	line-height: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+	margin: 50px 0px 50px;
+}
+
+
+form {
+	display: block;
+	margin-top: 0em;
+}
+
+/*이메일 입력부*/
+.content_wrap {
+	position: relative;
+	display: inline-block;
+	width: 290px;
+	height: 60px;
+	padding-left: 0px;
+}
+.content {
+	display: flex;
+	position: relative;
+	margin-bottom: 10px;
+	width: 290px;
+	height: 40px;
+	border-bottom: 1.3px solid rgb(238,238,238);
+	transition: 0.3s ease 0s;
+}
+.input_val {
+	width: 270px;
+	height: 12px;
+	line-height: 12px;
+	font-size: 12px;
+	padding: 14px 0px;
+	outline: none;
+}
+.margin {
+	width: 290px;
+	height: 10px;
+	line-height: 10px;
+	color: rgb(238,238,238);
+	text-align: left;
+}
+
+.form > button {
+	margin-top: 10px;
+}
+
+.join_btn {
+	width: 290px;
+	height: 50px;
+	line-height: 13px;
+	background-color: rgb(221,221,221);
+	text-align: center;
+	cursor: not-allowed;
+	color: white;
+	font-size: 13px;
+	padding: 0px 13px;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+.post_find{
+	display: inline-block;
+	height: 25px;
+	width: 130px;
+	margin-top: 7px;
+	font-size: 11px;
+	border-radius: 4px;
+	color: white;
+	line-height: 23px;
+}
+.post_find:hover {
+	background-color: #f9c00c;
+}
+
+
+/*-------------약관동의-------------*/
+.agree_all {
+	width: 290px;
+	line-height: 18px;
+	color: rgb(85,85,85);
+	text-align: left;
+	word-break: keep-all;
+	font-size: 10px;
+	padding: 20px 0px;
+}
+.check_label {
+	flex: 1.5;
+	position: relative;
+	display: inline-block;
+	line-height: 18px;
+	cursor: pointer;
+	margin-right: 10px;
+	width: 19px;
+	height: 19px;
+	text-align: center;
+	background-image: url(images/ck_off.png);
+	background-size: cover;
+}
+.ck_content_wrap {
+	flex: 8.5;
+}
+.agree_wrap input:checked +label {
+	background-image: url(images/ck_on.png);
+}
+.ck_box {
+	position: relative;
+	width: 0;
+	height: 0;
+	opacity: 0;
+}
+.ck_anker {
+	text-decoration: underline;
+}
+.update_margin {
+	margin-bottom: 30px;
+}
+.id_margin {
+	margin-bottom: 30px;
+}
+.email_val {
+	cursor: not-allowed;
+}
+
+
+
+/*------------회원탈퇴 내용박스----------------*/
+.out_wrap {
+	border: solid 1.2px #f9c00c;
+	white-space: 290px;
+	height: 310px;
+	border-radius: 10px;
+	margin-bottom: 30px;
+	padding: 25px;
+}
+.out_content_wrap {
+	display: flex;
+	align-items: center;
+	flex-flow: column;
+}
+.out_title {
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 20px;
+	margin-top: 46px;
+	color: rgb(85,85,85);
+	line-height: 20px;
+}
+.out_content{
+	line-height: 17px;
+	text-align: left;
+}
+
+/*-------- 회원탈퇴 버튼 ----------*/
+.out_btn {
+	width: 290px;
+	height: 50px;
+	line-height: 13px;
+	background-color: rgb(221,221,221);
+	text-align: center;
+	cursor: pointer;
+	color: white;
+	font-size: 13px;
+	padding: 0px 13px;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+.out_btn:hover {
+	background-color: #f9c00c;
+}
+
+/*-----modal-------*/
+#delete_modal_all {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.4);
+	z-index: 2000;
+	align-items: center;
+	justify-content: center;
+	display: none;
+}
+#delete_modal_window {
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 3px 6px 6px 0 rgba(0,0,0,.4);
+}
+.delete_modal_title{
+	margin: 30px 0px 40px;
+	font-size: 20px;
+}
+.close_modal {
+	color: lightgray;
+	display: flex;
+	justify-content: flex-end;
+	font-size: 20px;
+}
+.close_icon:hover {
+	color: #f9c00c;
+	cursor: pointer;
+}
+.sad_icon{
+	font-size: 100px;
+	color: #f9c00c;
+	margin-bottom: 30px; 
+}
+.btn_wrap {
+	display: flex;
+	justify-content: center;
+}
+.btn_wrap > button {
+	border-radius: 5px;
+	width: 100px;
+	height: 40px;
+	color: white;
+}
+.btn_wrap > button:hover {
+	background-color:#f9c00c;
+}
+.no_btn {
+	margin-right: 20px;
+}
+
+
+
+
+
+

@@ -62,7 +62,13 @@ form {
 	display: block;
 	margin-top: 0em;
 }
-
+.userName_color {
+	color : #f9c00c;
+	font-weight: 600;
+}
+.userId_color{
+	color : #f9c00c;
+}
 
 /*이메일 입력부*/
 .email {
@@ -141,7 +147,7 @@ form {
 	font-size: 13px;
 	padding: 0px 13px;
 	border-radius: 5px;
-
+	margin-top:30px; 
 }
 .lost_pass{
 	margin-top: 30px;
@@ -272,4 +278,8 @@ nav {
 }
 .nav_dropbox > a > div:hover{
 	background-color: #FFFED7;
+}
+.modal_err_msg{
+	display: inline-block;
+	color: tomato;
 }
