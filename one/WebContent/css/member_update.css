@@ -278,6 +278,22 @@ form {
 .no_btn {
 	margin-right: 20px;
 }
+/* ----------회원정보수정 버튼------------- */
+.update_btn {
+	width: 290px;
+	height: 50px;
+	line-height: 13px;
+	background-color: rgb(221,221,221);
+	text-align: center;
+	color: white;
+	font-size: 13px;
+	padding: 0px 13px;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+.update_btn:hover {
+	background-color:#f9c00c;
+}
 
 
 

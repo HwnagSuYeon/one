@@ -47,6 +47,17 @@ public class MemberDTO {
 		this.addr1 = addr1;
 		this.addr2 = addr2;
 	}
+	
+
+	public MemberDTO(String id, String name, String phone, String zipcode, String addr1, String addr2) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.phone = phone;
+		this.zipcode = zipcode;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+	}
 
 
 

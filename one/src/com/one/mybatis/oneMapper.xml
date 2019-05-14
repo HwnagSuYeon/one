@@ -35,4 +35,25 @@
 		SELECT * FROM tbl_member
 		WHERE id = #{id} AND pw = #{pw}
 	</select>
+	
+	<update id="memUpdate">
+		UPDATE tbl_member SET
+			name = #{name},
+			phone = #{phone},
+			zipcode = #{zipcode},
+			addr1 = #{addr1},
+			addr2 = #{addr2}
+		WHERE id = #{id}
+	</update>
+	
+	<select id="selectOne" parameterType="String" resultType="com.one.dto.MemberDTO">
+		SELECT * FROM tbl_member
+		WHERE id=#{id}
+	</select>
+	
+	<select id="pwCheck" parameterType="hashmap" resultType="int">
+	<!-- SELECT * FROM으로 쓰지 않은이유는 int타입으로 반환받기위해서. id와 pw값을 둘다 만족시키는 1건의 결과를 숫자로(true,false)받기위해 COUNT로 검색한다. -->
+		SELECT COUNT(*) FROM tbl_member
+		WHERE id = #{id} AND pw = #{pw}
+	</select>
 </mapper>

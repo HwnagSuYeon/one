@@ -119,7 +119,7 @@ var joinValidate = {
 			return this.resultCode.invalid_pw;
 		} else {
 			if (memRpw != "" || memRpw.length != 0) {
-				if(memPw == memRpw) {
+				/*if(memPw == memRpw) {
 					$(".err_msg").eq(2).text(this.resultCode.success_pw.desc)
 									   .css("display","block")
 			 						   .css("color","dodgerblue")
@@ -130,7 +130,7 @@ var joinValidate = {
 			   			 			   .css("color","tomato")
 			   			 			   .css("text-align","right");
 					return false;
-				}
+				}*/
 			}
 			return this.resultCode.success_pw;
 		}

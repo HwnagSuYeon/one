@@ -14,11 +14,15 @@ import com.one.action.ActionForward;
 import com.one.action.ConstractAction;
 import com.one.action.IdCheckAction;
 import com.one.action.IndexAction;
+import com.one.action.InfoUpdateAction;
+import com.one.action.InfoUpdatePlayAction;
 import com.one.action.JoinAction;
 import com.one.action.LogOutAction;
 import com.one.action.LoginAjaxAction;
 import com.one.action.LogoutAjaxAction;
 import com.one.action.MemberPlayAction;
+import com.one.action.PwCheckAction;
+import com.one.action.PwUpdateAction;
 
 
 
@@ -77,11 +81,19 @@ public class FrontController extends HttpServlet {
 			} else if (command.equals("/logoutAjax.one")){
 				action = new LogoutAjaxAction();
 				forward = action.excute(request, response);
+			} else if (command.equals("/infoUpdate.one")){
+				action = new InfoUpdateAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/infoUpdatePlay.one")){
+				action = new InfoUpdatePlayAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/pwUpdate.one")){
+				action = new PwUpdateAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/pwCheck.one")){
+				action = new PwCheckAction();
+				forward = action.excute(request, response);
 			}
-			
-			System.out.println("uri>>>" + uri);
-			System.out.println("ctx>>>" + ctx);
-			System.out.println("cmd>>> "+ command);
 			
 			
 			if(forward !=null) {

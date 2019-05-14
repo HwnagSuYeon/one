@@ -13,26 +13,25 @@
 	<main class="main_wrap">
 		<div class="main_position">
 			<h1 class="title">회원정보 수정</h1>
-			<form class="form_content">
-
+			<form action="infoUpdatePlay.one" method="POST" name="" class="form_content">
 				<div class="contet_wrap">
 					<div class="content">
-						<input class="input_val email_val" type="text" placeholder="ID 입력" readonly="readonly">
-						<input class="post_find" type="button" value="비밀번호 변경">
+						<input name="id" class="email_val" type="text" placeholder="ID 입력" readonly="readonly" value="${ sessionScope.loginUser.id }">
+						<input class="post_find" id="pw_update_btn" type="button" value="비밀번호 변경">
 					</div>
 					<div class="margin id_margin"></div>
 				</div>
 				
 				<div class="contet_wrap">
 					<div class="content">
-						<input class="input_val name_val" type="text" placeholder="이름">
+						<input name="name" class="input_val name_val" type="text" placeholder="이름" value="${ sessionScope.loginUser.name }">
 					</div>
 					<div class="margin"></div>
 				</div>
 
 				<div class="contet_wrap">
 					<div class="content">
-						<input class="input_val phone_val" type="text" placeholder="핸드폰 번호">
+						<input name="phone" class="input_val phone_val" type="text" placeholder="핸드폰 번호" value="${ sessionScope.loginUser.phone }">
 					</div>
 					<div class="margin"></div>
 				</div>
@@ -40,7 +39,7 @@
 
 				<div class="contet_wrap">
 					<div class="content">
-						<input  class="input_val" type="text" id="sample6_postcode" placeholder="우편번호">
+						<input name="zipcode"  class="input_val" type="text" id="sample6_postcode" placeholder="우편번호" value="${ sessionScope.loginUser.zipcode }">
 						<input class="post_find" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
 					</div>
 					<div class="margin"></div>
@@ -48,20 +47,26 @@
 
 				<div class="contet_wrap">
 					<div class="content">
-						<input class="input_val" type="text" id="sample6_address" placeholder="주소">
+						<input name="addr1" class="input_val" type="text" id="sample6_address" placeholder="주소" value="${ sessionScope.loginUser.addr1 }">
 					</div>
 					<div class="margin"></div>
 				</div>
 
 				<div class="contet_wrap">
 					<div class="content">
-						<input class="input_val" type="text" id="sample6_detailAddress" placeholder="상세주소">
+						<input name="addr2" class="input_val" type="text" id="sample6_detailAddress" placeholder="상세주소" value="${ sessionScope.loginUser.addr2 }">
 					</div>
 					<div class="margin"></div>
 				</div>
 				
 				
-				<button class="join_btn" type="submit" color="white" disabled="disabled">회원정보 수정</button>
+				<button class="update_btn" type="submit" color="white">회원정보 수정</button>
+				<!-- 폼태그 내의 submit쓸 수 있는 방법
+					 1. button type="submmit"
+					 2. input type="submmit" vlue="회원수정"
+					 3. button, input외에 모든 태그로 하는 방법
+					 	ex) div id = "div_btn"
+					 	제이쿼리로 서브밋을 반드시 해줘야함. -->
 				
 			</form>
 		</div>
@@ -106,10 +111,10 @@
                     	extraAddr = ' (' + extraAddr + ')';
                     }
                     // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                    document.getElementById("sample6_detailAddress").value = extraAddr;
                     
                 } else {
-                	document.getElementById("sample6_extraAddress").value = '';
+                	document.getElementById("sample6_detailAddress").value = '';
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
@@ -132,6 +137,18 @@
 			$('.input_val').blur(function(){
 				$(this).parent().css('border-bottom', '1.3px solid rgb(238,238,238)');
 			});
+			
+			$('#pw_update_btn').click(function () {
+				location.href="${path}/pwUpdate.one";
+			});
+			
+			// 이메일 분할해서 정보 받아오는 역할
+		/* 	var email = email.indexOf('@');
+			var emailid = email.substring(0, index);
+			var emailurl = email.substring(index + 1);
+			
+			$('.email_id').val(emailid);
+			$('.email_url').val(emailurl)*/
 		});
 	</script>
 	<%@ include file="include/footer.jsp"%>

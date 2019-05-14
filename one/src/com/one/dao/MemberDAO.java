@@ -1,5 +1,7 @@
 package com.one.dao;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -17,7 +19,10 @@ public class MemberDAO {
 	}
 	
 	int result = 0;
+	MemberDTO mDto = new MemberDTO();
+	boolean flag = false;
 	
+	// id중복체크기능
 	public String idCheck(String id) {
 		// 19. myBatis를 사용하기 위해 sqlSession을 빌려옴
 		sqlSession = sqlSessionFactory.openSession();
@@ -58,5 +63,58 @@ public class MemberDAO {
 			sqlSession.close();
 		}
 		return result;
+	}
+	
+	
+	// 회원정보 수정(pw제외)
+	public int memUpdate(MemberDTO mDto) {
+		sqlSession = sqlSessionFactory.openSession(true);
+		
+		try {
+			result = sqlSession.update("memUpdate",mDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return result;
+	}
+	
+	// 회원 1명의 정보를 가져옴: 아이디정보 다 갖고와서 세션에 모든 정보를 넣기 위해 사용
+	public MemberDTO memOne(String id) {
+		sqlSession = sqlSessionFactory.openSession();
+		
+		try {
+			mDto = sqlSession.selectOne("memOne",id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return mDto;
+	}
+	
+	//비밀번호 재설정(현재 비밀번호와 입력한 비밀번호가 일치하는지 확인)
+	public boolean pwCheck(String id, String pw) {
+		sqlSession = sqlSessionFactory.openSession();
+		HashMap<String, String> map= new HashMap<>();
+		
+		try {
+			map.put("id", id);
+			map.put("pw", pw);
+			result = sqlSession.selectOne("pwCheck", map);
+			
+			if(result == 1) {
+				flag=true;
+			} else {
+				flag=false;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return flag;
 	}
 }
