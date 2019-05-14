@@ -119,20 +119,24 @@
 					<a href="#" class="nav_wrap">
 						<div style="display: inline-block;">
 							<div class="nav_wrap_content">
-								<label class="nav_dropbox_pointer"> <span
-									style="cursor: pointer; font-weight: normal;">고객센터 <i
-										class="fas fa-chevron-down"></i>
-								</span> <!-- dropbox -->
+								<label class="nav_dropbox_pointer">
+									<span style="cursor: pointer; font-weight: normal;">마이페이지
+										<i class="fas fa-chevron-down"></i>
+									</span>
 								</label>
+								<!-- dropbox -->
 								<div class="nav_dropbox">
 									<a href="#" class="nav_dropbox_content">
-										<div class="drop_backcolor">공지사항</div>
+										<div class="drop_backcolor">내 좋아요</div>
 									</a>
 									<a href="#" class="nav_dropbox_content">
-										<div class="drop_backcolor">자주 묻는 질문</div>
+										<div class="drop_backcolor">관심 클래스</div>
 									</a>
 									<a href="#" class="nav_dropbox_content">
-										<div class="drop_backcolor">호스트 가입</div>
+										<div class="drop_backcolor">내정보 수정</div>
+									</a>
+									<a href="#" class="nav_dropbox_content">
+										<div class="drop_backcolor">회원탈퇴</div>
 									</a>
 								</div>
 							</div>
@@ -217,7 +221,7 @@
 			$('.password_val').blur(function () {
 				login_btn_color();
 			});
-			
+			// 로그인 모달창 내 id, pw값이 모두 들어있을 때 로그인버튼에 색 들어오게 만드는 기능
 			function login_btn_color() {
 				var id = $.trim($('.email_val').val());
 				var pw = $.trim($('.password_val').val());
@@ -248,6 +252,22 @@
 				   .attr("disabled",false);
 				$('.modal_err_msg').css('display','none');
 			}
+			
+			//로그아웃 기능
+			$('.logout_btn').click(function () {
+				$.ajax({
+					url: "logoutAjax.one",
+					type: "POST",
+					dataType: "json",
+					success: function(data) {
+						location.reload();
+						// 로그아웃 성공시 새로고침
+					},
+					error:function(){
+						alert("system error♨♨♨")
+					}
+				});
+			});
 
 			// 모달창 열고닫고
 			$('.open_modal').click(function(){
@@ -255,6 +275,19 @@
 			});
 			$('.close_modal > i').click(function(){
 				$('#modal_all').css('display', 'none');
+			});
+			
+			// 고객센터 클릭시 드롭박스 출력
+			var flag = 0;
+			$('.nav_dropbox_pointer').click(function () {
+				if(flag==0) {
+					$('.nav_dropbox').css('display','block');
+					flag = 1;
+				} else {
+					$('.nav_dropbox').css('display','none');
+					flag = 0;
+				}
+				
 			});
 			
 			

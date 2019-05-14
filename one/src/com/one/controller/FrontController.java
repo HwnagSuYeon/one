@@ -17,6 +17,7 @@ import com.one.action.IndexAction;
 import com.one.action.JoinAction;
 import com.one.action.LogOutAction;
 import com.one.action.LoginAjaxAction;
+import com.one.action.LogoutAjaxAction;
 import com.one.action.MemberPlayAction;
 
 
@@ -72,6 +73,9 @@ public class FrontController extends HttpServlet {
 				forward = action.excute(request, response);
 			} else if (command.equals("/logOut.one")){
 				action = new LogOutAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/logoutAjax.one")){
+				action = new LogoutAjaxAction();
 				forward = action.excute(request, response);
 			}
 			
