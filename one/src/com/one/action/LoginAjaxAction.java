@@ -41,6 +41,7 @@ public class LoginAjaxAction implements Action {
 			message = "-1";
 		}
 		
+		// json객체생성 : 컴퓨터가 읽을 수 있는 양식
 		JSONObject jObj = new JSONObject();
 		jObj.put("message", message);
 		response.setContentType("application/x-json; charset=UTF-8");
