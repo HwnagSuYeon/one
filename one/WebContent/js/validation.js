@@ -184,7 +184,35 @@ function ajaxCheck(memId){
 
 
 
-
+function ajaxPwCheck(nowId, nowPw) {
+	var return_val = false;
+	$.ajax({
+		url: 'pwCheck.one',
+		type: 'POST',
+		dataType: 'json',
+		async: false,
+		data: 'id='+nowId+'&pw='+nowPw,
+		success: function (data) {
+			if(data.flag) {
+				$("#pwAjax").text("유저 정보와 비밀번호가 일치합니다")
+							   .css("display","block")
+				 			   .css("color","dodgerblue")
+				 			   .css("text-align","right");
+				return_val = true;
+			} else {
+				$("#pwAjax").text("유저 정보와 비밀번호가 일치하지 않습니다")
+				   .css("display","block")
+	 			   .css("color","tomato")
+	 			   .css("text-align","right");
+				return_val = false;
+			}
+		},
+		error: function () {
+			alert("system error!");
+		}
+	});
+	return return_val;
+}
 
 
 

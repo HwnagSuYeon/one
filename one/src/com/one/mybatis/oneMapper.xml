@@ -57,4 +57,14 @@
 		WHERE id = #{id} AND pw = #{pw}
 	</select>
 	
+	<update id="pwUpdate" parameterType="hashmap">
+		UPDATE tbl_member SET
+			pw = #{pw}
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="memDelete" parameterType="String">
+		DELETE FROM tbl_member
+		WHERE id = #{id}
+	</delete>
 </mapper>

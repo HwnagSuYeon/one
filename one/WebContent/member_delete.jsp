@@ -32,7 +32,7 @@
 				<div class="out_wrap">
 					<div class="out_content_wrap">
 						<span class="out_title">
-						<span style="color: #f9c00c">"님"</span>회원탈퇴시<br> 아래의 조취가 취해집니다.
+						<span style="color: #f9c00c">"${sessionScope.loginUser.name}"님</span>회원탈퇴시<br> 아래의 조취가 취해집니다.
 						</span><br>					
 						<span class="out_content">
 						1. 계정정보는 <span style="color: #f9c00c">"개인 정보 보호 정책"에 따라 60일간 보관(잠김)</span>되며,60일이 경과된 후에는 모든 개인정보는 완전히 삭제되어 더 이상 복구할 수 없습니다.<br>
@@ -47,6 +47,7 @@
 					<div class="content">
 						<input class="input_val pw_val" type="password" placeholder="현재 비밀번호 입력">
 					</div>
+					<span id="pwAjax" class="err_msg"></span>
 				</div>
 				
 				
@@ -111,26 +112,44 @@
         }).open();
 		}
 	</script>
-
+	<script type="text/javascript" src="js/validation.js"></script>
 	<!-- 입력칸 클릭시 밑줄 색 바뀌는 기능 -->
 	<script type="text/javascript">
 		$(document).ready(function() {
+			var state = false;
+			//현재비밀번호, 입력비밀번호 일치확인
+			$('.pw_val').blur(function () {
+				var nowId ="${sessionScope.loginUser.id}";
+				var nowPw = $(this).val();
+				state = ajaxPwCheck(nowId, nowPw);
+				
+			});
+			$('.out_btn').click(function () {
+				alert(state);
+				if (state){
+					$('#delete_modal_all').css('display','block');
+				}else {
+					$('.pw_val').focus();
+				}
+			});
+			
 			$('.input_val').focus(function(){
 				$(this).parent().css('border-bottom', '1.3px solid #f9c00c');
 			});
 			$('.input_val').blur(function(){
 				$(this).parent().css('border-bottom', '1.3px solid rgb(238,238,238)');
 			});
-
-			// 모달창 열고닫고
-			$('.out_btn').click(function(){
-				$('#delete_modal_all').css('display' ,'flex');
+			$('.yes_btn').click(function () {
+				/* var id = "${sessionScope.loginuser.id}";
+				location.href = "dropMember.one:id="+id; */
+				
+				location.href="dropMemberPlay.one"
 			});
+
+			// 모달창 닫기
 			$('.close_icon').click(function(){
 				$('#delete_modal_all').css('display', 'none');
-			});
-			
-
+			}); 
 		});
 	</script>
 

@@ -117,4 +117,36 @@ public class MemberDAO {
 		}
 		return flag;
 	}
+	
+	//비밀번호 수정정보 DB로 보내는 액션
+	public int pwUpdate(String id, String pw) {
+		sqlSession = sqlSessionFactory.openSession(true);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("pw", pw);
+		System.out.println(id+", "+pw);
+		try {
+			result = sqlSession.update("pwUpdate", map);
+			System.out.println("DB끝");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return result;
+	}
+	
+	//회원 삭제기능
+	public int memDelete(String id) {
+		sqlSession = sqlSessionFactory.openSession(true);
+		
+		try {
+			result = sqlSession.delete("memDelete", id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return result;
+	}
 }

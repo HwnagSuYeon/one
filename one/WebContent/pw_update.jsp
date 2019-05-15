@@ -14,18 +14,20 @@
 		<div class="main_position">
 			<h1 class="title">비밀번호 수정</h1>
 			<form class="form_content" action="pwUpdatePlay.one" method="POST" id="pw_update_frm" name="pw_update_frm">
-
+				<!-- sql문에서는 항상 prymaryKey인 id 값이 필요. 그러므로 id 값을 가져오기위해 form태그 내에 session에서 가져온 id 값을 action단으로 넘기는
+					 경우도 있고, action단에서session객체를 생성해 id값을 꺼내오는 경우도 있다. 바로 하단의 코드는 jsp내에서 session내의 id 값을 가져오는 코드이다. -->
+				<input type="hidden" name="id" value="${sessionScope.loginUser.id}">
 				<div class="contet_wrap">
 					<div class="content">
 						<input class="input_val now_pw_val" type="password" placeholder="현재 비밀번호 입력">
 					</div>
-					<span class="err_msg"></span>
+					<span class="err_msg"  id="pwAjax"></span>
 					<div class="margin id_margin"></div>
 				</div>
 				
 				<div class="contet_wrap">
 					<div class="content">
-						<input id="pw_val" class="input_val pw_val new_pw" type="password" placeholder="새 비밀번호 입력">
+						<input name="pw_val" id="pw_val" class="input_val pw_val new_pw" type="password" placeholder="새 비밀번호 입력">
 					</div>
 					<span class="err_msg"></span>
 					<div class="margin"></div>
@@ -66,30 +68,7 @@
 				var nowPw = $('.now_pw_val').val(); // 입력받은  현재 비밀번호
 				var nowId = "${sessionScope.loginUser.id}"; //session에 있는 현재 id(pw만 비교하면 중복 pw가 있을 수 도 있기때문에)
 				if (nowPw != null || nowPw.length != 0) {
-					$.ajax({
-						url: 'pwCheck.one',
-						type: 'POST',
-						dataType: 'json',
-						data: 'id='+nowId+'&pw='+nowPw,
-						success: function (data) {
-							if(data.flag) {
-								currentPw = true;
-								$(".err_msg").eq(0).text("유저 정보와 비밀번호가 일치합니다")
-								   .css("display","block")
-					 			   .css("color","dodgerblue")
-					 			   .css("text-align","right");
-							} else {
-								currentPw = false;
-								$(".err_msg").eq(0).text("유저 정보와 비밀번호가 일치하지 않습니다")
-								   .css("display","block")
-					 			   .css("color","tomato")
-					 			   .css("text-align","right");
-							}
-						},
-						error: function () {
-							alert("system error!");
-						}
-					});
+					currentPw = ajaxPwCheck(nowId, nowPw);
 				}
 			});
 			

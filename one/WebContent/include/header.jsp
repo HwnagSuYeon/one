@@ -135,7 +135,7 @@
 									<a href="${path}/infoUpdate.one" class="nav_dropbox_content">
 										<div class="drop_backcolor">내정보 수정</div>
 									</a>
-									<a href="#" class="nav_dropbox_content">
+									<a href="${path}/dropMember.one" class="nav_dropbox_content">
 										<div class="drop_backcolor">회원탈퇴</div>
 									</a>
 								</div>

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.one.action.Action;
 import com.one.action.ActionForward;
 import com.one.action.ConstractAction;
+import com.one.action.DropMemberAction;
+import com.one.action.DropMemberPlayAction;
 import com.one.action.IdCheckAction;
 import com.one.action.IndexAction;
 import com.one.action.InfoUpdateAction;
@@ -23,6 +25,7 @@ import com.one.action.LogoutAjaxAction;
 import com.one.action.MemberPlayAction;
 import com.one.action.PwCheckAction;
 import com.one.action.PwUpdateAction;
+import com.one.action.PwUpdatePlayAction;
 
 
 
@@ -92,6 +95,15 @@ public class FrontController extends HttpServlet {
 				forward = action.excute(request, response);
 			} else if (command.equals("/pwCheck.one")){
 				action = new PwCheckAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/pwUpdatePlay.one")){
+				action = new PwUpdatePlayAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/dropMember.one")){
+				action = new DropMemberAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/dropMemberPlay.one")){
+				action = new DropMemberPlayAction();
 				forward = action.excute(request, response);
 			} 
 			
