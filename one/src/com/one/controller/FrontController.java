@@ -93,7 +93,7 @@ public class FrontController extends HttpServlet {
 			} else if (command.equals("/pwCheck.one")){
 				action = new PwCheckAction();
 				forward = action.excute(request, response);
-			}
+			} 
 			
 			
 			if(forward !=null) {

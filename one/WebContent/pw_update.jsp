@@ -13,7 +13,7 @@
 	<main class="main_wrap">
 		<div class="main_position">
 			<h1 class="title">비밀번호 수정</h1>
-			<form class="form_content">
+			<form class="form_content" action="pwUpdatePlay.one" method="POST" id="pw_update_frm" name="pw_update_frm">
 
 				<div class="contet_wrap">
 					<div class="content">
@@ -25,7 +25,7 @@
 				
 				<div class="contet_wrap">
 					<div class="content">
-						<input class="input_val pw_val" type="password" placeholder="새 비밀번호 입력">
+						<input id="pw_val" class="input_val pw_val new_pw" type="password" placeholder="새 비밀번호 입력">
 					</div>
 					<span class="err_msg"></span>
 					<div class="margin"></div>
@@ -33,13 +33,13 @@
 
 				<div class="contet_wrap">
 					<div class="content">
-						<input class="input_val pwck_val" type="password" placeholder="새 비밀번호 한번더 입력">
+						<input id="pwck_val" class="input_val pwck_val" type="password" placeholder="새 비밀번호 한번더 입력">
 					</div>
 					<span class="err_msg"></span>
 					<div class="margin"></div>
 				</div>
 				
-				<button class="join_btn" type="submit" style="color: white;" disabled="disabled">수정</button>
+				<button id="pw_update_btn" class="join_btn" type="submit" style="color: white;">비밀번호 수정</button>
 			</form>
 		</div>
 	</main>
@@ -48,6 +48,8 @@
 	<!-- 입력칸 클릭시 밑줄 색 바뀌는 기능 -->
 	<script type="text/javascript">
 		$(document).ready(function() {
+			var currentPw = false;
+			var newPwEq = false;
 			//nowPw, pw, pwck의 값이 유효한지 확인하기 위한 전역변수
 			var ck_val = "";
 			
@@ -71,11 +73,13 @@
 						data: 'id='+nowId+'&pw='+nowPw,
 						success: function (data) {
 							if(data.flag) {
+								currentPw = true;
 								$(".err_msg").eq(0).text("유저 정보와 비밀번호가 일치합니다")
 								   .css("display","block")
 					 			   .css("color","dodgerblue")
 					 			   .css("text-align","right");
 							} else {
+								currentPw = false;
 								$(".err_msg").eq(0).text("유저 정보와 비밀번호가 일치하지 않습니다")
 								   .css("display","block")
 					 			   .css("color","tomato")
@@ -90,9 +94,9 @@
 			});
 			
 			// 새 비밀번호 유효성 검사
-			$(".pw_val").blur(function() {
-				var memPw = $.trim($('.pw_val').val());
-				var memRpw = $.trim($('.pwck_val').val());
+			$("#pw_val").blur(function() {
+				var memPw = $.trim($('#pw_val').val());
+				var memRpw = $.trim($('#pwck_val').val());
 				var checkResult = joinValidate.checkPw(memPw, memRpw);
 				// 아이디값을 가져가 validation에서 검사를 실행.
 				if(checkResult.code != 0) {
@@ -106,15 +110,32 @@
 									   .css("display","block")
 						 			   .css("color","dodgerblue")
 						 			   .css("text-align","right");
+					if (memRpw != "" || memRpw.length != 0) {
+						if(memPw == memRpw) {
+							newPwEq = true;
+							$(".err_msg").eq(2).text("비밀번호가 일치합니다")
+											   .css("display","block")
+					 						   .css("color","dodgerblue")
+					 			 			   .css("text-align","right");
+						} else {
+							newPwEq = false;
+							$(".err_msg").eq(2).text("입력하신 비밀번호가 일치하지 않습니다")
+					   			 			   .css("display","block")
+					   			 			   .css("color","tomato")
+					   			 			   .css("text-align","right");
+							return false;
+						}
+					}
 					return true;
 				}
+				return false;
 			});
 			
 			//새 비밀번호 한번더입력 유효성 검사
-			$('.pwck_val').blur(function () {
-				var memPw = $.trim($('.pw_val').val());
-				var memRpw = $.trim($('.pwck_val').val());
-				var checkResult = joinValidate.checkPw(memPw, memRpw);
+			$("#pwck_val").blur(function() {
+				var memPw = $.trim($('#pw_val').val());
+				var memRpw = $.trim($('#pwck_val').val());
+				var checkResult = joinValidate.checkRpw(memPw, memRpw);
 				// 아이디값을 가져가 validation에서 검사를 실행.
 				if(checkResult.code != 0) {
 					$(".err_msg").eq(2).text(checkResult.desc)
@@ -122,48 +143,56 @@
 						 			   .css("color","tomato")
 						 			   .css("text-align","right");
 					return false;
-				} else if (pw != rpw) {
-					$(".err_msg").eq(2).text("입력하신 비밀번호와 일치하지 않습니다!")
-							   			 .css("display","block")
-							   			 .css("color","tomato")
-							   			 .css("text-align","right");
-					return false;
-				} else if (pw == rpw) {
-					$(".err_msg").eq(2).text("입력하신 비밀번호와 일치합니다.")
-										 .css("display","block")
-							 			 .css("color","dodgerblue")
-							 			 .css("text-align","right");
-				}
-				
-				
-				
-				
-				
-				/* var pw = $.trim($(".pw_val").val());
-				var rpw = $.trim($(this).val());
-				
-				var regEmpty = /\s/g; //공백문자 정규식
-				var pwReg = RegExp(/^[a-zA-Z0-9]{4,12}$/); //비밀번호 정규식
-				if (pw != rpw) {
-					$(".err_msg").eq(2).text("입력하신 비밀번호와 일치하지 않습니다!")
-					   			 .css("display","block")
-	 				   			 .css("color","tomato")
-	 				   			 .css("text-align","right");
-					return false;
-				} else if (pw == null || pw.length == 0){
-					$(".err_msg").eq(2).text("필수 입력정보입니다")
-						   			   .css("display","block")
-						   			   .css("color","tomato")
-						   				 .css("text-align","right");
 				} else {
-					$(".err_msg").eq(2).text("입력하신 비밀번호와 일치합니다.")
-								 .css("display","block")
-					 			 .css("color","dodgerblue")
-					 			 .css("text-align","right");
-				} */
+					$(".err_msg").eq(2).text(checkResult.desc)
+									   .css("display","block")
+						 			   .css("color","dodgerblue")
+						 			   .css("text-align","right");
+					if (memPw != "" || memPw.length != 0) {
+						if(memPw == memRpw) {
+							newPwEq = true;
+							$(".err_msg").eq(2).text("비밀번호가 일치합니다")
+											   .css("display","block")
+					 						   .css("color","dodgerblue")
+					 			 			   .css("text-align","right");
+						} else {
+							newPwEq = false;
+							$(".err_msg").eq(2).text("입력하신 비밀번호가 일치하지 않습니다")
+					   			 			   .css("display","block")
+					   			 			   .css("color","tomato")
+					   			 			   .css("text-align","right");
+							return false;
+						}
+					}
+					return true;
+				}
+				return false;
 			});
 			
-			
+			// 비밀번호 수정버튼 누르면 서브밋되도록
+			$('#pw_update_btn').click(function () {
+				var postPw = $('.now_pw_val').val();
+				var newPw = $('.new_pw').val();
+				// 최종체크
+				//1. 현재비밀번호 = 유저정보 ->일치여부
+				//전역변수 currentPw를 만들어 기본값을 false 부여
+				if(!currentPw) {
+					$('.now_pw_val').focus();
+					return false;
+				} else if (!newPwEq) { //2. 새 비밀번호 = 새 비밀번호 확인-> 일치여부
+					$('.new_pw').focus();
+					return false;
+				} else if (postPw == newPw){ //3. 현재비밀번호 = 새 비밀번호-> 일치여부:현재비밀번호와 바꾼비밀번호가 같으면 쓸 수 없음
+					$('.new_pw').focus();
+					$('.err_msg').eq(1).text("현재비밀번호와 다르게 입력해주세요")
+						 			   .css("display","block")
+						 			   .css("color","tomato")
+						 			   .css("text-align","right");
+					return false;
+				}
+				
+				$('#pw_update_frm').submit();
+			});
 		});
 	</script>
 </body>

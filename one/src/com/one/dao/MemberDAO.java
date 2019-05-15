@@ -71,7 +71,7 @@ public class MemberDAO {
 		sqlSession = sqlSessionFactory.openSession(true);
 		
 		try {
-			result = sqlSession.update("memUpdate",mDto);
+			result = sqlSession.update("memUpdate", mDto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -85,7 +85,7 @@ public class MemberDAO {
 		sqlSession = sqlSessionFactory.openSession();
 		
 		try {
-			mDto = sqlSession.selectOne("memOne",id);
+			mDto = sqlSession.selectOne("memOne", id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

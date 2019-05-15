@@ -118,20 +118,20 @@ var joinValidate = {
 		}  else if (!pwReg.test(memPw)) {
 			return this.resultCode.invalid_pw;
 		} else {
-			if (memRpw != "" || memRpw.length != 0) {
-				/*if(memPw == memRpw) {
-					$(".err_msg").eq(2).text(this.resultCode.success_pw.desc)
-									   .css("display","block")
-			 						   .css("color","dodgerblue")
-			 			 			   .css("text-align","right");
-				} else {
-					$(".err_msg").eq(2).text(this.resultCode.other_pw.desc)
-			   			 			   .css("display","block")
-			   			 			   .css("color","tomato")
-			   			 			   .css("text-align","right");
-					return false;
-				}*/
-			}
+			return this.resultCode.success_pw;
+		}
+	},
+	checkRpw: function(mempw, memRpw) {
+		var regEmpty = /\s/g; //공백문자 정규식
+		var pwReg = RegExp(/^[a-zA-Z0-9]{4,12}$/); //비밀번호 정규식
+		
+		if(memRpw==""|| memRpw.length == 0){
+			return this.resultCode.empty_val;
+		} else if (memRpw.match(regEmpty)) {
+			return this.resultCode.space_length_val;
+		}  else if (!pwReg.test(memRpw)) {
+			return this.resultCode.invalid_pw;
+		} else {
 			return this.resultCode.success_pw;
 		}
 	}

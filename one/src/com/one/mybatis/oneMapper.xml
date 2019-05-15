@@ -36,7 +36,7 @@
 		WHERE id = #{id} AND pw = #{pw}
 	</select>
 	
-	<update id="memUpdate">
+	<update id="memUpdate" parameterType="com.one.dto.MemberDTO">
 		UPDATE tbl_member SET
 			name = #{name},
 			phone = #{phone},
@@ -46,7 +46,7 @@
 		WHERE id = #{id}
 	</update>
 	
-	<select id="selectOne" parameterType="String" resultType="com.one.dto.MemberDTO">
+	<select id="memOne" parameterType="String" resultType="com.one.dto.MemberDTO">
 		SELECT * FROM tbl_member
 		WHERE id=#{id}
 	</select>
@@ -56,4 +56,5 @@
 		SELECT COUNT(*) FROM tbl_member
 		WHERE id = #{id} AND pw = #{pw}
 	</select>
+	
 </mapper>

@@ -138,17 +138,9 @@
 				$(this).parent().css('border-bottom', '1.3px solid rgb(238,238,238)');
 			});
 			
-			$('#pw_update_btn').click(function () {
-				location.href="${path}/pwUpdate.one";
+			$('#pw_update_btn').click (function () {
+				location.href='pwUpdate.one';
 			});
-			
-			// 이메일 분할해서 정보 받아오는 역할
-		/* 	var email = email.indexOf('@');
-			var emailid = email.substring(0, index);
-			var emailurl = email.substring(index + 1);
-			
-			$('.email_id').val(emailid);
-			$('.email_url').val(emailurl)*/
 		});
 	</script>
 	<%@ include file="include/footer.jsp"%>

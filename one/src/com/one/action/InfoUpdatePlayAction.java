@@ -17,6 +17,8 @@ public class InfoUpdatePlayAction implements Action {
 			throws ServletException, IOException {
 		String url= "index.one";
 		
+		
+		System.out.println("탔음");
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		String phone = request.getParameter("phone");
@@ -24,11 +26,16 @@ public class InfoUpdatePlayAction implements Action {
 		String addr1 = request.getParameter("addr1");
 		String addr2 = request.getParameter("addr2");
 		MemberDTO mDto = new MemberDTO(id, name, phone, zipcode, addr1, addr2);
+		
+		System.out.println(mDto.toString());
+		
+		
 		MemberDAO mDao = MemberDAO.getInstance();
 		int result = mDao.memUpdate(mDto);
 		
 		if (result > 0) {
 			mDto = mDao.memOne(id);
+			System.out.println(mDto.toString());
 			
 			HttpSession session = request.getSession();
 			session.removeAttribute("loginUser");

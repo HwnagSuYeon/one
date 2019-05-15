@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.one.dto.MemberDTO;
+
 public class InfoUpdateAction implements Action {
 
 	@Override
@@ -20,6 +22,10 @@ public class InfoUpdateAction implements Action {
 		if(session.getAttribute("loginUser") == null) {
 			url = "index.one";
 		} 
+		
+		
+		MemberDTO mDto = (MemberDTO) session.getAttribute("loginUser");
+		System.out.println(mDto.toString());
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath(url);
