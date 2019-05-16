@@ -35,7 +35,9 @@ public class MemberDTO {
 		this.regdate = regdate;
 	}
 
+	
 
+	
 
 	public MemberDTO(String id, String pw, String name, String phone, String zipcode, String addr1, String addr2) {
 		super();
@@ -47,7 +49,8 @@ public class MemberDTO {
 		this.addr1 = addr1;
 		this.addr2 = addr2;
 	}
-	
+
+
 
 	public MemberDTO(String id, String name, String phone, String zipcode, String addr1, String addr2) {
 		super();

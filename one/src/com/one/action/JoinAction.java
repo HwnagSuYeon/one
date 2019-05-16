@@ -11,7 +11,7 @@ public class JoinAction implements Action{
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = "join.jsp";
+		String url = "member/join.jsp";
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath(url);

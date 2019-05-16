@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="include/header.jsp"%>
+<%@ include file="../include/header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,7 @@
 	<!-- modal -->
 	<div id="delete_modal_all">
 		<div id="delete_modal_window">
-			<div class="main_position">
+			<div class="delete_main_position">
 				<span class="close_modal"><i class="fas fa-times close_icon"></i></span>
 				<h1 class="delete_modal_title">정말로 탈퇴하시겠어요?</h1>
 				<i class="far fa-sad-tear sad_icon"></i>
@@ -125,7 +125,6 @@
 				
 			});
 			$('.out_btn').click(function () {
-				alert(state);
 				if (state){
 					$('#delete_modal_all').css('display','block');
 				}else {
@@ -150,6 +149,9 @@
 			$('.close_icon').click(function(){
 				$('#delete_modal_all').css('display', 'none');
 			}); 
+			$('.no_btn').click(function () {
+				$('#delete_modal_all').css('display', 'none');
+			});
 		});
 	</script>
 

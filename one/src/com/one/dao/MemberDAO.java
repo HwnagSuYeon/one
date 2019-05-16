@@ -66,6 +66,7 @@ public class MemberDAO {
 	}
 	
 	
+	
 	// 회원정보 수정(pw제외)
 	public int memUpdate(MemberDTO mDto) {
 		sqlSession = sqlSessionFactory.openSession(true);
