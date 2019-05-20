@@ -102,3 +102,48 @@ VALUES('user03', '1234', 'user3', '01012345678', '741852', '서울특별시 구�
 COMMIT;
 
 DESC tbl_member;
+
+
+-- one 게시판 테이블
+DROP SEQUENCE seq_board;
+CREATE SEQUENCE seq_board
+START WITH 1
+INCREMENT BY 1;
+
+
+DROP TABLE tbl_board;
+CREATE TABLE tbl_board(
+    bno NUMBER PRIMARY KEY,
+    title VARCHAR2(200) NOT NULL,
+    content VARCHAR2(4000) NOT NULL,
+    writer VARCHAR2(30) NOT NULL,
+    viewcnt NUMBER DEFAULT 0,
+    replycnt NUMBER DEFAULT 0,
+    goodcnt NUMBER DEFAULT 0,
+    regdate DATE DEFAULT SYSDATE,
+    filename VARCHAR2(100),
+    filesize NUMBER
+);
+SELECT * FROM tbl_board;
+
+
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, 'this is test page1', '테스트페이지입니다', 'user01');
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, 'this is test page2', '테스트페이지입니다', 'user05');
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, 'this is test page3', '테스트페이지입니다', 'user03');
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, 'this is test page4', '테스트페이지입니다', 'user05');
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, 'this is test page5', '테스트페이지입니다', 'user01');
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, 'this is test page6', '테스트페이지입니다', 'user03');
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, 'this is test page7', '테스트페이지입니다', 'user05');
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, 'this is test page8', '테스트페이지입니다', 'user05');
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, 'this is test page9', '테스트페이지입니다', 'user01');
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, 'this is test page10', '테스트페이지입니다', 'user03');
