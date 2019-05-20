@@ -22,50 +22,75 @@
 	</select>
 	<!-- 21. 매개변수로 전달받은 id값을 sql문에 바인딩 변수로 넣고 sql문 실행(DB로 이동) -->
 	<select id="idCheck" parameterType="String" resultType="String">
-	<!-- DB에서 받아오는 id값은 1개이기때문에 반환타입(result type)은 String -->
+		<!-- DB에서 받아오는 id값은 1개이기때문에 반환타입(result type)은 String -->
 		SELECT id FROM tbl_member
 		WHERE id = #{id}
 	</select>
-	
-	<select id="loginCheck" parameterType="com.one.dto.MemberDTO" resultType="com.one.dto.MemberDTO">
+
+	<select id="loginCheck" parameterType="com.one.dto.MemberDTO"
+		resultType="com.one.dto.MemberDTO">
 		SELECT * FROM tbl_member
 		WHERE id = #{id} AND pw = #{pw}
 	</select>
-	
+
 	<insert id="memInsert" parameterType="com.one.dto.MemberDTO">
-		INSERT INTO tbl_member(id, pw, name, phone, zipcode, addr1, addr2)
-		VALUES(#{id}, #{pw}, #{name}, #{phone}, #{zipcode}, #{addr1}, #{addr2})
+		INSERT INTO tbl_member(id,
+		pw, name, phone, zipcode, addr1, addr2)
+		VALUES(#{id}, #{pw}, #{name},
+		#{phone}, #{zipcode}, #{addr1}, #{addr2})
 	</insert>
-	
+
 	<update id="memUpdate" parameterType="com.one.dto.MemberDTO">
 		UPDATE tbl_member SET
-			name = #{name},
-			phone = #{phone},
-			zipcode = #{zipcode},
-			addr1 = #{addr1},
-			addr2 = #{addr2}
+		name = #{name},
+		phone = #{phone},
+		zipcode = #{zipcode},
+		addr1 = #{addr1},
+		addr2 = #{addr2}
 		WHERE id = #{id}
 	</update>
-	
-	<select id="memOne" parameterType="String" resultType="com.one.dto.MemberDTO">
+
+	<select id="memOne" parameterType="String"
+		resultType="com.one.dto.MemberDTO">
 		SELECT * FROM tbl_member
 		WHERE id=#{id}
 	</select>
-	
+
 	<select id="pwCheck" parameterType="hashmap" resultType="int">
-	<!-- SELECT * FROM으로 쓰지 않은이유는 int타입으로 반환받기위해서. id와 pw값을 둘다 만족시키는 1건의 결과를 숫자로(true,false)받기위해 COUNT로 검색한다. -->
+		<!-- SELECT * FROM으로 쓰지 않은이유는 int타입으로 반환받기위해서. id와 pw값을 둘다 만족시키는 1건의 결과를 
+			숫자로(true,false)받기위해 COUNT로 검색한다. -->
 		SELECT COUNT(*) FROM tbl_member
 		WHERE id = #{id} AND pw = #{pw}
 	</select>
-	
+
 	<update id="pwUpdate" parameterType="hashmap">
 		UPDATE tbl_member SET
-			pw = #{pw}
+		pw = #{pw}
 		WHERE id = #{id}
 	</update>
-	
+
 	<delete id="memDelete" parameterType="String">
 		DELETE FROM tbl_member
 		WHERE id = #{id}
 	</delete>
+
+
+	<!-- 게시판 -->
+	<select id="totalCount" resultType="int">
+		SELECT COUNT (bno)
+		FROM tbl_board
+		WHERE bno > 0
+	</select>
+	
+	
+	<select id="listAll" resultType="com.one.dto.BoardDTO">
+		SELECT *
+		FROM (SELECT rownum rnum, a.*
+			  FROM (SELECT *
+			  FROM tbl_board
+			  WHERE bno >0
+			  ORDER BY bno DESC
+			  ) a
+		) WHERE rnum BETWEEN #{pageStart} AND #{perPageNum}
+	</select>
 </mapper>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${path}/css/common.css?v=1">
-<link rel="stylesheet" href="css/footer.css?v=1">
+<link rel="stylesheet" href="${path}/css/footer.css?v=1">
 <title>Insert title here</title>
 </head>
 <body>
