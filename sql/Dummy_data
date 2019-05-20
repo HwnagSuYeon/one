@@ -147,3 +147,16 @@ INSERT INTO tbl_board(bno, title, content, writer)
 VALUES(seq_board.NEXTVAL, 'this is test page9', '테스트페이지입니다', 'user01');
 INSERT INTO tbl_board(bno, title, content, writer)
 VALUES(seq_board.NEXTVAL, 'this is test page10', '테스트페이지입니다', 'user03');
+
+
+
+COMMIT;
+
+SELECT *
+FROM (SELECT rownum rnum, a.*
+      FROM (SELECT *
+            FROM tbl_board
+            WHERE bno >0
+            ORDER BY bno DESC
+            ) a
+     ) WHERE rnum BETWEEN 1 AND 10;
