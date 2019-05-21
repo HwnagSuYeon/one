@@ -17,6 +17,9 @@ input {
 	border: none;
 	display: block;
 }
+*:focus {
+	outline: none;
+}
 form {
 	width: 290px;
 }

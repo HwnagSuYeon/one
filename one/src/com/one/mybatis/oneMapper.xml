@@ -42,11 +42,13 @@
 
 	<update id="memUpdate" parameterType="com.one.dto.MemberDTO">
 		UPDATE tbl_member SET
-		name = #{name},
+		name =
+		#{name},
 		phone = #{phone},
 		zipcode = #{zipcode},
 		addr1 = #{addr1},
-		addr2 = #{addr2}
+		addr2 =
+		#{addr2}
 		WHERE id = #{id}
 	</update>
 
@@ -65,7 +67,8 @@
 
 	<update id="pwUpdate" parameterType="hashmap">
 		UPDATE tbl_member SET
-		pw = #{pw}
+		pw =
+		#{pw}
 		WHERE id = #{id}
 	</update>
 
@@ -80,17 +83,63 @@
 		SELECT COUNT (bno)
 		FROM tbl_board
 		WHERE bno > 0
+		<if test="search_option == 1">
+			AND title LIKE '%' || #{keyword} || '%'
+		</if>
+		<if test="search_option == 2">
+			AND writer LIKE '%' || #{keyword} || '%'content LIKE '%' || #{keyword}
+			|| '%'
+		</if>
+		<if test="search_option == 3">
+			AND title LIKE '%' || #{keyword} || '%' OR content LIKE '%' ||
+			#{keyword}
+		</if>
+		<if test="search_option == 4">
+			AND writer LIKE '%' || #{keyword} || '%'
+		</if>
 	</select>
-	
-	
+
+
 	<select id="listAll" resultType="com.one.dto.BoardDTO">
 		SELECT *
 		FROM (SELECT rownum rnum, a.*
-			  FROM (SELECT *
-			  FROM tbl_board
-			  WHERE bno >0
-			  ORDER BY bno DESC
-			  ) a
+		FROM (SELECT *
+		FROM tbl_board
+		WHERE bno > 0
+		<if test="search_option == 1">
+			AND title LIKE '%' || #{keyword} || '%'
+		</if>
+		<if test="search_option == 2">
+			AND writer LIKE '%' || #{keyword} || '%'content LIKE '%' || #{keyword}
+			|| '%'
+		</if>
+		<if test="search_option == 3">
+			AND title LIKE '%' || #{keyword} || '%' OR content LIKE '%' ||
+			#{keyword}
+		</if>
+		<if test="search_option == 4">
+			AND writer LIKE '%' || #{keyword} || '%'
+		</if>
+
+		<if test="sort_type == 'new'">
+			ORDER BY bno DESC
+		</if>
+		<if test="sort_type == 'good'">
+			ORDER BY goodcnt DESC, bno DESC
+		</if>
+		<if test="sort_type == 'reply'">
+			ORDER BY replycnt DESC, bno DESC
+		</if>
+		<if test="sort_type == 'view'">
+			ORDER BY viewcnt DESC, bno DESC
+		</if>
+		) a
 		) WHERE rnum BETWEEN #{pageStart} AND #{perPageNum}
 	</select>
+	<!-- #{pageStart} AND #{perPageNum} -> 매개변수로 criteriaDTO criDto를 보냈으므로 본 
+		바인딩변수는 getPageStart() 혹은 setPageStart로 인식을한다. SQL문은 SELECT이므로 get으로 인식했고, 
+		getpageStart()를 실행하기 위해 criteriaDTO클래스 내로 찾아감. -->
+	<!-- 서브쿼리문: 가장 안쪽괄호의 실행결과 -> 전체 게시글 최신순으로 조회(a라는 이름을 붙여줌) : 두번째 괄호안의 실행 
+		결과-> 전체 게시글에서 rownum 컬럼 추가 : 마지막 괄호실행결과 -> rnum의 결과값중 pageStart부터 perPageNum까지만 
+		결과 출력.즉, 조회된결과중 page에 출력할 10건에 게시글만 조회 -->
 </mapper>
