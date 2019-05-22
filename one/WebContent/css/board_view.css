@@ -694,3 +694,68 @@ nav {
 .no_btn {
 	margin-right: 20px;
 }
+
+/*-----modal-------*/
+#delete_all {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.4);
+	z-index: 2000;
+	align-items: center;
+	justify-content: center;
+	display: none;
+}
+#delete_window {
+	background-color: white;
+	border-radius: 5px;
+	display: inline-block;
+	height: 400px;
+	padding: 30px 20px;
+	box-shadow: 3px 6px 6px 0 rgba(0,0,0,.4);
+}
+.position {
+	display: flex;
+	justify-content: center;
+	margin: 240px;
+}
+.delete_modal_title{
+	margin: 10px 0px 30px;
+}
+.close_modal_delete {
+	color: lightgray;
+	display: flex;
+	justify-content: flex-end;
+	font-size: 20px;
+}
+.close_icon:hover {
+	color: #f9c00c;
+	cursor: pointer;
+}
+.sad_icon{
+	font-size: 100px;
+	color: #f9c00c;
+	margin: 50px 0; 
+	display: block;
+	text-align: center;
+}
+.delete_btn_wrap {
+	display: flex;
+	justify-content: center;
+}
+.delete_btn_wrap > button {
+	border-radius: 5px;
+	width: 100px;
+	height: 40px;
+	color: white;
+	background-color: #dadada;
+}
+.delete_btn_wrap > button:hover {
+	background-color:#f9c00c;
+}
+.no_btn {
+	margin-right: 20px;
+}

@@ -70,7 +70,7 @@
 				<tr class="list_content">
 					<td>${bDto.bno}</td>
 					<td>
-						<a href="#" class="board_cnt_title">${bDto.title}
+						<a href="${path}/boardView.one?bno=${bDto.bno}" class="board_cnt_title">${bDto.title}
 							<!-- 댓글이 한개라도 있으면 if문을 타서 댓글의 갯수를 띄워주는 역할 -->
 							<c:if test="${bDto.replycnt > 0}">
 								<span class="replyCnt_Color">${bDto.replycnt}</span>
@@ -93,7 +93,7 @@
 						</c:choose>
 					</td>
 					<td><i class="fas fa-heart heart"></i>${bDto.goodcnt}</td>
-					<td>${bDto.viewcnt}</td>
+					<td><i class="far fa-user view_icon"></i>${bDto.viewcnt}</td>
 					<td>
 						<a href="#" class="files">
 							<i class="far fa-file file_icon"></i>

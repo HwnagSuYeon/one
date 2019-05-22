@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.one.action.Action;
 import com.one.action.ActionForward;
 import com.one.action.BoardListAction;
+import com.one.action.BoardViewAction;
+import com.one.action.CommentListAction;
 import com.one.action.ConstractAction;
 import com.one.action.DropMemberAction;
 import com.one.action.DropMemberPlayAction;
@@ -109,7 +111,15 @@ public class FrontController extends HttpServlet {
 			} else if (command.equals("/boardList.one")){
 				action = new BoardListAction();
 				forward = action.excute(request, response);
+			} else if (command.equals("/boardView.one")){
+				action = new BoardViewAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/commentlist.one")){
+				action = new CommentListAction();
+				forward = action.excute(request, response);
 			}
+			
+			
 			
 			
 			

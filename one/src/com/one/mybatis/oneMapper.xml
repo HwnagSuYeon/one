@@ -142,4 +142,20 @@
 	<!-- 서브쿼리문: 가장 안쪽괄호의 실행결과 -> 전체 게시글 최신순으로 조회(a라는 이름을 붙여줌) : 두번째 괄호안의 실행 
 		결과-> 전체 게시글에서 rownum 컬럼 추가 : 마지막 괄호실행결과 -> rnum의 결과값중 pageStart부터 perPageNum까지만 
 		결과 출력.즉, 조회된결과중 page에 출력할 10건에 게시글만 조회 -->
+		
+	<select id="view" parameterType="String" resultType="com.one.dto.BoardDTO">
+		SELECT * FROM tbl_board
+		WHERE bno = #{bno}
+	</select>
+	
+	<update id="viewCnt" parameterType="String">
+		UPDATE tbl_board
+		   SET viewcnt = viewcnt +1
+		WHERE bno = #{bno}
+	</update>
+	
+	<select id="replyList" parameterType="String" resultType="com.one.dto.ReplyDTO">
+		SELECT * FROM tbl_reply
+		WHERE bno = #{bno}
+	</select>
 </mapper>

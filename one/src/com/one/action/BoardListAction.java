@@ -17,6 +17,7 @@ public class BoardListAction implements Action{
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// 변수에 목적지를 넣은 것 뿐
 		String url = "board/board_list.jsp";
 		
 		CriteriaDTO criDto = new CriteriaDTO();
@@ -24,6 +25,8 @@ public class BoardListAction implements Action{
 		// 페이지 번호설정
 		int page = 1; // 인덱스페이지에서 처음 게시판을 눌렀을 때 디폴트로 1페이지를 띄우기 위해 설정
 		// 화면단에서 받아온 페이지값을 page에 넣어줌. 만약 입력값이 없다면 null로 값이 들어오기 때문에 if문을 반드시 써줘야함. 정렬과 검색시에도 이 코드로 쓴다.
+		// reqeust.getParametr -> 이전페이지에게 값을 요청하는 것. 화면단에게 페이지를 요청하는 것
+		// but 화면단에서는 폼태그, 쿼리스트링, 에이젝스
 		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
