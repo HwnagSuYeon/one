@@ -160,3 +160,40 @@ FROM (SELECT rownum rnum, a.*
             ORDER BY bno DESC
             ) a
      ) WHERE rnum BETWEEN 1 AND 10;
+
+
+
+-- one 댓글 테이블 생성
+DROP SEQUENCE seq_reply
+CREATE SEQUENCE seq_reply
+START WITH 1
+INCREMENT BY 1;
+
+DROP TABLE tbl_reply;
+CREATE TABLE tbl_reply(
+    rno NUMBER PRIMARY KEY,
+    content VARCHAR2(2000) NOT NULL,
+    writer VARCHAR2(30) NOT NULL,
+    regdate DATE DEFAULT SYSDATE,
+    bno NUMBER NOT NULL
+);
+
+ALTER TABLE tbl_reply
+ADD CONSTRAINT tbl_reply_fk_bno
+FOREIGN KEY(bno) REFERENCES tbl_board(bno);
+
+DELETE FROM tbl_reply;
+INSERT INTO tbl_reply(rno,content, writer, bno)
+VALUES(seq_reply.NEXTVAL, '테스트 댓글입니다', 'user01', 10);
+INSERT INTO tbl_reply(rno,content, writer, bno)
+VALUES(seq_reply.NEXTVAL, '치킨강정!!!', 'user02', 7);
+INSERT INTO tbl_reply(rno,content, writer, bno)
+VALUES(seq_reply.NEXTVAL, '내일 급식 뭔지 아는사람', 'user01', 50);
+INSERT INTO tbl_reply(rno,content, writer, bno)
+VALUES(seq_reply.NEXTVAL, '집에 가고싶다', 'user03', 100);
+INSERT INTO tbl_reply(rno,content, writer, bno)
+VALUES(seq_reply.NEXTVAL, '범인은 수지언닝ㅋㅋ', 'user05', 150);
+
+SELECT * FROM tbl_reply;
+
+COMMIT;

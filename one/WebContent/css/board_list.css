@@ -17,6 +17,9 @@ input {
 	border: none;
 	display: block;
 }
+*:focus {
+	outline: none;
+}
 form {
 	width: 290px;
 }
@@ -422,6 +425,10 @@ nav {
 }
 .heart {
 	color: tomato;
+	font-size: 15px;
+}
+.view_icon{
+	color: #dadada;
 	font-size: 15px;
 }
 .file_icon {
