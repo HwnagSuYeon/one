@@ -86,8 +86,8 @@
 					</div>
 				</div>
 				<div class="like_btn">
-					<span class="like_befor circle"><i class="far fa-heart"></i></span>
-					<span class="like_after circle"><i class="fas fa-heart"></i></span>
+					<span id="like" class="like_befor circle"><i class="far fa-heart"></i></span>
+					<span id="unLike" class="like_after circle"><i class="fas fa-heart"></i></span>
 				</div>
 			</div>
 			
@@ -106,7 +106,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script type="text/javascript">
 		// 댓글 삭제기능
-
 		$(document).on('click', '.cmt_delete', function () {
 			var rno = $(this).attr("data_num");
 			var bno = '${one.bno}';
@@ -123,6 +122,10 @@
 			});
 		});
 			
+		// 좋아요를 눌렀을 때 실행되는 기능
+		$(ducument).on('click', '#like', function () {
+			
+		});
 	
 		// 댓글버튼을 눌렀을때 실행되는 기능
 		$(document).on('click', '#cmt_btm', function(){
