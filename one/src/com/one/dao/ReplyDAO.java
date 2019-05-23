@@ -13,6 +13,7 @@ public class ReplyDAO {
 	SqlSession sqlSession;
 	ReplyDTO rDto = new ReplyDTO();
 	List<ReplyDTO> list = null; 
+	int result = 0;
 	
 	private ReplyDAO() {}
 	private static ReplyDAO instance = new ReplyDAO();
@@ -32,5 +33,33 @@ public class ReplyDAO {
 			sqlSession.close();
 		}
 		return list;
+	}
+	
+	// 댓글 등록하는 기능
+	public int replyAdd(ReplyDTO rDto) {
+		sqlSession = sqlSessionFactory.openSession(true);
+		
+		try {
+			result = sqlSession.insert("replyAdd", rDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return result;
+	}
+	
+	// 댓글 삭제하는 기능
+	public int replyRemove(int rno) {
+		sqlSession = sqlSessionFactory.openSession(true);
+		
+		try {
+			result = sqlSession.delete("replyRemove", rno);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return result;
 	}
 }

@@ -9,8 +9,6 @@
 <title>Insert title here</title>
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
-
-@import url('boardMain.css');
 </style>
 </head>
 <body>

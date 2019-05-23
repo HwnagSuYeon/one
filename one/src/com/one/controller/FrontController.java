@@ -29,6 +29,8 @@ import com.one.action.MemberPlayAction;
 import com.one.action.PwCheckAction;
 import com.one.action.PwUpdateAction;
 import com.one.action.PwUpdatePlayAction;
+import com.one.action.ReplyAddAction;
+import com.one.action.ReplyRemoveAction;
 
 
 
@@ -117,7 +119,15 @@ public class FrontController extends HttpServlet {
 			} else if (command.equals("/commentlist.one")){
 				action = new CommentListAction();
 				forward = action.excute(request, response);
+			} else if (command.equals("/replyAdd.one")){
+				action = new ReplyAddAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/replyRemove.one")){
+				action = new ReplyRemoveAction();
+				forward = action.excute(request, response);
 			}
+			
+			
 			
 			
 			

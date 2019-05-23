@@ -101,4 +101,34 @@ public class BoardDAO {
 			sqlSession.close();
 		}
 	}
+	
+	
+	// 게시글 등록시 댓글카운트 1증가
+	public int replyCntUpdate(int bno) {
+		sqlSession = sqlSessionFactory.openSession(true);
+		
+		try {
+			result = sqlSession.update("replyCntUpdate", bno);
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			sqlSession.close();
+		}
+		return result;
+	}
+	
+	// 게시글 삭제시 댓글카운트 -1
+	public int replyCntMinus(int bno) {
+		sqlSession = sqlSessionFactory.openSession(true);
+		
+		try {
+			result = sqlSession.update("replyCntMinus", bno);
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			sqlSession.close();
+		}
+		return result;
+		
+	}
 }

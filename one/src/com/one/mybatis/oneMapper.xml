@@ -158,4 +158,26 @@
 		SELECT * FROM tbl_reply
 		WHERE bno = #{bno}
 	</select>
+	
+	<insert id="replyAdd" parameterType="com.one.dto.ReplyDTO">
+		INSERT INTO tbl_reply(rno,content, writer, bno)
+		VALUES(seq_reply.NEXTVAL, #{content}, #{writer}, #{bno})
+	</insert>
+	
+	<delete id="replyRemove" parameterType="int">
+		DELETE FROM tbl_reply
+		WHERE rno = #{rno}
+	</delete>
+	
+	<update id="replyCntUpdate" parameterType="int">
+		UPDATE tbl_board
+		SET replycnt = replycnt+1
+		WHERE bno = #{bno}
+	</update>
+	
+	<update id="replyCntMinus" parameterType="int">
+		UPDATE tbl_board
+		SET replycnt = replycnt-1
+		WHERE bno = #{bno}
+	</update>
 </mapper>

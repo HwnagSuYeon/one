@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${path}/css/board_view.css?v=1">
 <title>Insert title here</title>
+<script type="text/javascript" src="${path}/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
 <body>
 	<!-- modal -->
@@ -63,8 +64,7 @@
 					
 					
 					<div class="board_all_wrpa"></div>
-					<div
-					+ class="viewpage_content">
+					<div class="viewpage_content">
 						<div class="inner_wrap">
 							<span class="date">
 								<i class="far fa-clock"></i> 작성일
@@ -105,22 +105,82 @@
 	<%@ include file="../include/footer.jsp" %>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function (){
-			// 문서가 준비되면 댓글 목록을 조회하는 ajax 실행
-				comment_list();
+		// 댓글 삭제기능
+
+		$(document).on('click', '.cmt_delete', function () {
+			var rno = $(this).attr("data_num");
+			var bno = '${one.bno}';
 			
-			// 댓글 띄우는 기능
-			function comment_list(){
-				
+			$.ajax({
+				url: "replyRemove.one",
+				data: "rno="+rno+"&bno="+bno,
+				success: function (result) {
+					comment_list();
+				},
+				error: function () {
+					alert("system error");
+				}
+			});
+		});
+			
+	
+		// 댓글버튼을 눌렀을때 실행되는 기능
+		$(document).on('click', '#cmt_btm', function(){
+			oEditors.getById["replyInsert"].exec("UPDATE_CONTENTS_FIELD", []);
+			
+			
+			var content = $('#replyInsert').val();
+			if(content == "<p><br></p>"){
+				//null체크
+				alert('test');
+				$('.cmt_err_msg').css("display","block");
+				$('#replyInsert').focus();
+				return false;
+			} else {
+				var bno = '${one.bno}';
+				$('#re_bno').val(bno);
 				$.ajax({
-					type: "post",
-					url: "commentlist.one",
-					data: "bno=${one.bno}",
-					success: function(result) {
-						$("#commentList").html(result);
+					url: 'replyAdd.one',
+					type: 'post',
+					data: $('#frm_reply').serialize(), // -> ajax로 폼태그 안에 들어있는 데이터 보내는 방법. serialize->직렬화. 데이터가 많으니 바이트코드로 쪼개서 받는곳에서 합친다.
+					dataType: 'json',
+					contentType: 'application/x-www-form-urlencoded; charset+UTF-8', // serialize를 사용하려면 content타입을 써줘야 함.
+					success:
+						function(data) {
+							if(data.result == 1) {
+								comment_list(); // 댓글 다는데 성공하면 댓글 목록을 최신화 시켜주는 기능								
+								$("#replyInsert").val("");  //성공하면 댓글 다는곳의 값을 초기화 시켜줌. ajax라서 다시 원 화면으로 돌아와 입력했던 값을 그대로 띄우기 때문.
+							}
+						
+					},
+					error: function (){
+						alert("system error")
 					}
 				});
 			}
+		});
+		
+		// 댓글 띄우는 기능: ajax
+		function comment_list(){
+			
+			$.ajax({
+				type: "post",
+				url: "commentlist.one",
+				data: "bno=${one.bno}",
+				success: function(result) {
+					// ajax실행 후 회귀하는 것으로, result에는 comment_list.jsp가 통째로 들어있는 것.
+					// id가 commentList인것을 찾아서 html을 띄우는데, result(=comment_list.jsp)값을 띄워라
+					// 즉 jsp페이지 자체를 매개변수로 보내준 것이다.
+					$("#commentList").html(result);
+				}
+			});
+		}
+		
+	
+		$(document).ready(function (){
+			// 문서가 준비되면 댓글 목록을 조회하는 ajax 실행
+			comment_list();
+			
 			
 			// 좋아요 줬다 뺐었다
 			$('.like_befor').click(function (){
