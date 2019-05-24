@@ -23,7 +23,7 @@
 					<i class="far fa-sad-tear sad_icon"></i>
 					<div class="delete_btn_wrap">
 						<button class="no_btn" type="submit" color="white" disavled>생각해볼게요</button>
-						<button class="yes_btn" type="submit" color="white" disavled>삭제할게요</button>
+						<button id="yes_btn" class="yes_btn" type="button" color="white" disavled>삭제할게요</button>
 					</div>
 				</div>
 			</div>
@@ -122,8 +122,15 @@
 			});
 		});
 			
-		// 좋아요를 눌렀을 때 실행되는 기능
+		// 게시글 삭제 버튼 눌렀을 때 어디로가야하는지
+		$(document).on('click', '#yes_btn', function () {
+			location.href = "boardDelete.one?bno=${one.bno}";
+		});
 		
+		// 게시글 수정버튼 눌렀을 때
+		$(document).on('click', '.text_update', function () {
+			location.href = "boardUpdate.one?bno=${one.bno}";
+		});
 	
 		// 댓글버튼을 눌렀을때 실행되는 기능
 		$(document).on('click', '#cmt_btm', function(){

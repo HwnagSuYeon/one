@@ -38,7 +38,7 @@
 								});
 							</script>
 						<div class="add_file_wrap" >
-							<input type="file" name="uploadfile" id="uploadfile">
+							<input type="file" name="uploadfile" id="uploadfile" style="display: none;">
 							<input id="add_file" type="button" class="viewpage_btn add_file" value="파일첨부">
 							<span class="add_file_text" id="file_name">첨부된 파일이 없습니다 </span>
 							<span id="now_file_size"></span>
@@ -135,10 +135,10 @@
 		
 		// 첨부파일 삭제 아이콘 누르면일어나는 일
 		$(document).on('click', '#close_file_btn', function () {
-			$('#uploadfile').repaceWith($('#uploadfile')).clone(true);
+			$('#uploadfile').replaceWith($('#uploadfile').clone(true)); /* 파일 다시선택해서 올라가게 만듦  */
 			$('#uploadfile').val("");
 			$('#now_file_size').text("");
-			$('#file_name').text("선택된 파일 없음");
+			$('#file_name').text("선택된 파일 없음"); 
 			$('#close_file_btn').css("display","none");
 		});
 		

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.one.action.Action;
 import com.one.action.ActionForward;
+import com.one.action.BoardDeleteAction;
 import com.one.action.BoardListAction;
 import com.one.action.RegisterAjaxAction;
 import com.one.action.RegisterPlayAction;
@@ -137,7 +138,15 @@ public class FrontController extends HttpServlet {
 			} else if (command.equals("/registerPlay.one")){
 				action = new RegisterPlayAction();
 				forward = action.excute(request, response);
+			} else if (command.equals("/boardDelete.one")){
+				action = new BoardDeleteAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/boardUpdate.one")){
+				action = new BoardUpdateAction();
+				forward = action.excute(request, response);
 			}
+			
+			
 			
 			
 			

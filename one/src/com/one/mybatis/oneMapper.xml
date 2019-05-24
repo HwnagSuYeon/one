@@ -184,4 +184,9 @@
 		INSERT INTO tbl_board(bno, title, content, writer)
 		VALUES(seq_board.NEXTVAL, #{title}, #{content}, #{writer})
 	</insert>
+	
+	<delete id="boardDelete" parameterType="int">
+		DELETE FROM tbl_board
+		WHERE bno = #{bno}
+	</delete>
 </mapper>
