@@ -123,9 +123,7 @@
 		});
 			
 		// 좋아요를 눌렀을 때 실행되는 기능
-		$(ducument).on('click', '#like', function () {
-			
-		});
+		
 	
 		// 댓글버튼을 눌렀을때 실행되는 기능
 		$(document).on('click', '#cmt_btm', function(){

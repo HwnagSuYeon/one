@@ -1,5 +1,6 @@
 package com.one.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -103,32 +104,38 @@ public class BoardDAO {
 	}
 	
 	
-	// 게시글 등록시 댓글카운트 1증가
-	public int replyCntUpdate(int bno) {
+	// 댓글 등록 또는 삭제시 해당 게시글 replycnt +1 or -1
+	public int replyCntUpdate(String bno, String flag) {
 		sqlSession = sqlSessionFactory.openSession(true);
 		
 		try {
-			result = sqlSession.update("replyCntUpdate", bno);
+			// mapper로 매개변수를 2개 보낼수 없으니 해쉬맵으로 담아 보내주도록 한다.(DTO에는 bno정보는 있으나 flag정보가 없기 때문)
+			HashMap<String, String> map = new HashMap<>();
+			map.put("bno", bno);
+			map.put("flag", flag);
+			
+			System.out.println("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆" + map.toString());
+			result = sqlSession.update("replyCntUpdate", map);
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			sqlSession.close();
 		}
 		return result;
+		
 	}
 	
-	// 게시글 삭제시 댓글카운트 -1
-	public int replyCntMinus(int bno) {
+	// 게시글 등록기능
+	public int registerPlay(BoardDTO bDto) {
 		sqlSession = sqlSessionFactory.openSession(true);
 		
 		try {
-			result = sqlSession.update("replyCntMinus", bno);
+			result = sqlSession.insert("boardInsert", bDto);
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			sqlSession.close();
 		}
 		return result;
-		
 	}
 }

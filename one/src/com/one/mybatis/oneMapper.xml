@@ -171,13 +171,17 @@
 	
 	<update id="replyCntUpdate" parameterType="int">
 		UPDATE tbl_board
-		SET replycnt = replycnt+1
+		<if test="flag == 'plus'">
+			SET replycnt = replycnt + 1
+		</if>
+		<if test="flag == 'minus'">
+			SET replycnt = replycnt - 1
+		</if>
 		WHERE bno = #{bno}
 	</update>
 	
-	<update id="replyCntMinus" parameterType="int">
-		UPDATE tbl_board
-		SET replycnt = replycnt-1
-		WHERE bno = #{bno}
-	</update>
+	<insert id="boardInsert" parameterType="com.one.dto.BoardDTO">
+		INSERT INTO tbl_board(bno, title, content, writer)
+		VALUES(seq_board.NEXTVAL, #{title}, #{content}, #{writer})
+	</insert>
 </mapper>

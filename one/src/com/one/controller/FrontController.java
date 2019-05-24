@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.one.action.Action;
 import com.one.action.ActionForward;
 import com.one.action.BoardListAction;
+import com.one.action.RegisterAjaxAction;
+import com.one.action.RegisterPlayAction;
+import com.one.action.RegisterViewAction;
 import com.one.action.BoardViewAction;
 import com.one.action.CommentListAction;
 import com.one.action.ConstractAction;
@@ -125,11 +128,16 @@ public class FrontController extends HttpServlet {
 			} else if (command.equals("/replyRemove.one")){
 				action = new ReplyRemoveAction();
 				forward = action.excute(request, response);
+			} else if (command.equals("/registerAjax.one")){
+				action = new RegisterAjaxAction();
+				forward = action.excute(request, response);
+			}  else if (command.equals("/registerView.one")){
+				action = new RegisterViewAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/registerPlay.one")){
+				action = new RegisterPlayAction();
+				forward = action.excute(request, response);
 			}
-			
-			
-			
-			
 			
 			
 			

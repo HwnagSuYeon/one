@@ -150,6 +150,24 @@
 		});
 	</script> -->
 	<script type="text/javascript">
+		$(document).on("click", ".board_insert_btn", function () {
+			$.ajax({
+				url: 'registerAjax.one',
+				type: 'POST',
+				dataType: 'json',
+				success: function (data) {
+					if(data.message == "login") {
+						location.href = "registerView.one";
+					} else if(data.message =="nologin") {
+						alert("모달");
+					}
+				},
+				error: function () {
+					alert("system error!");
+				}
+			});
+		});
+			
 		$(document).on("click", ".search_btn", function () {
 			var search_option = $('.select_box').val();
 			var keyword = $.trim($('.board_search').val());

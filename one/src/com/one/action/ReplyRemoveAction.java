@@ -16,7 +16,8 @@ public class ReplyRemoveAction implements Action {
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int rno = Integer.parseInt(request.getParameter("rno"));
-		int bno = Integer.parseInt(request.getParameter("bno"));
+		String strBno = request.getParameter("bno");
+		int bno = Integer.parseInt(strBno);
 		System.out.println(bno+", "+rno);
 		
 		
@@ -27,7 +28,8 @@ public class ReplyRemoveAction implements Action {
 			System.out.println("댓글삭제 성공");
 			// 댓글삭제 성공시 boardList.jsp에서 댓글의 갯수가 줄어야한다
 			BoardDAO bDao = BoardDAO.getInstance();
-			result = bDao.replyCntMinus(bno); 
+			String flag = "minus";
+			bDao.replyCntUpdate(strBno, flag);
 			
 			if(result > 0) {
 				System.out.println("댓글수 -1성공");
