@@ -34,12 +34,19 @@ public class BoardDTO {
 		this.filename = filename;
 		this.filesize = filesize;
 	}
-	
-	
 
 
 	public BoardDTO(String title, String content, String writer) {
 		super();
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+	}
+
+
+	public BoardDTO(int bno, String title, String content, String writer) {
+		super();
+		this.bno = bno;
 		this.title = title;
 		this.content = content;
 		this.writer = writer;

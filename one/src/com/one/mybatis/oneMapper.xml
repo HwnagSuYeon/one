@@ -189,4 +189,12 @@
 		DELETE FROM tbl_board
 		WHERE bno = #{bno}
 	</delete>
+	
+	<update id="boardUpdate" parameterType="com.one.dto.BoardDTO">
+		UPDATE tbl_board
+		SET title = #{title},
+			content = #{content},
+			writer = #{writer}
+		WHERE bno = #{bno}
+	</update>
 </mapper>

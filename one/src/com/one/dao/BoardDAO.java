@@ -158,4 +158,23 @@ public class BoardDAO {
 		}
 		return result;
 	}
+	
+	// 게시글 수정하기
+	public int boardUpdatePlay(BoardDTO bDto) {
+		sqlSession = sqlSessionFactory.openSession(true);
+		
+		try {
+			result = sqlSession.update("boardUpdate", bDto);
+			if(result > 0) {
+				System.out.println("게시글 수정 성공 ");
+			} else {
+				System.out.println("게시글 수정 실패 ");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return result;
+	}
 }
