@@ -197,3 +197,9 @@ VALUES(seq_reply.NEXTVAL, '범인은 수지언닝ㅋㅋ', 'user05', 150);
 SELECT * FROM tbl_reply;
 
 COMMIT;
+
+-- cascade: 연쇄작용으로 뭔가를 할 때 사용한다. 외래키로 묶여있을 때만 사용 가능하다. main이 수정되거나삭제되면 연쇄적으로 작용.
+ALTER TABLE tbl_reply drop constraint tbl_reply_fk_bno; 
+ALTER TABLE tbl_reply ADD CONSTRAINT tbl_reply_fk_bno FOREIGN KEY (bno)
+REFERENCES tbl_board (bno) ON DELETE CASCADE;
+-- 참조대상의 삭제시 참조를 하고있는 주체또한 삭제(ON DELETE CASCADE).
