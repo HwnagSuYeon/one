@@ -51,9 +51,17 @@
 
 					<span class="text_content">${one.content}</span>
 					<div class="add_file_wrap">
-						<button type="button" class="viewpage_btn add_file">파일첨부</button>
-						<span class="add_file_text">첨부된 파일이 없습니다 <i class="fas fa-times"></i></span>
-
+						<button type="button" class="viewpage_btn add_file" id="file_down">다운로드</button>
+						<c:choose>
+							<c:when test="${one.filesize>0}">
+									<span class="add_file_text"> ${one.filename}
+										(<fmt:formatNumber type="number" pattern="0.00" value="${one.filesize / 1024 /1024}"></fmt:formatNumber>mb)
+									</span>
+							</c:when>
+							<c:otherwise>
+								<span class="add_file_text">첨부된 파일이 없습니다.</span>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					
 					<jsp:useBean id="now" class="java.util.Date"/>
@@ -124,7 +132,7 @@
 			
 		// 게시글 삭제 버튼 눌렀을 때 어디로가야하는지
 		$(document).on('click', '#yes_btn', function () {
-			location.href = "boardDelete.one?bno=${one.bno}";
+			location.href = "removePlay.one?bno=${one.bno}&filename=${one.filename}";
 		});
 		
 		// 게시글 수정버튼 눌렀을 때
@@ -166,6 +174,10 @@
 					}
 				});
 			}
+		});
+		// 첨부파일 다운로드
+		$(document).on('click', '#file_down', function () {
+			location.href="download.one?file=${one.filename}";
 		});
 		
 		// 댓글 띄우는 기능: ajax

@@ -21,6 +21,7 @@ import com.one.action.RegisterViewAction;
 import com.one.action.BoardViewAction;
 import com.one.action.CommentListAction;
 import com.one.action.ConstractAction;
+import com.one.action.DownloadAction;
 import com.one.action.DropMemberAction;
 import com.one.action.DropMemberPlayAction;
 import com.one.action.IdCheckAction;
@@ -140,16 +141,17 @@ public class FrontController extends HttpServlet {
 			} else if (command.equals("/registerPlay.one")){
 				action = new RegisterPlayAction();
 				forward = action.excute(request, response);
-			} else if (command.equals("/boardDelete.one")){
+			} else if (command.equals("/removePlay.one")){
 				action = new BoardDeleteAction();
 				forward = action.excute(request, response);
 			} else if (command.equals("/boardUpdate.one")){
 				action = new BoardUpdateAction();
 				forward = action.excute(request, response);
-			} else if (command.equals("/boardUpdatePlay.one")){
-				action = new BoardUpdatePlayAction();
+			} else if (command.equals("/download.one")){
+				action = new DownloadAction();
 				forward = action.excute(request, response);
 			}
+			
 			
 			
 			

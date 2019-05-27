@@ -21,7 +21,8 @@
 			<h1 class="board_title">게시글 등록하기</h1>
 			<div class="board_view_all">
 				<div class="white_back">
-					<form class="board_frm" action="registerPlay.one" name="register_frm" method="POST" id="frm_board">
+					<form class="board_frm" action="registerPlay.one" name="register_frm" method="POST" enctype="multipart/form-data" id="frm_board">
+					<!-- multipart/form-data -> 파일첨부 기능을 쓰기 위해서 반드시 화면단에서 멀티파트로 보낸다. 또한 메서드는 포스트여야만 한다. 또한 화면단에서 멀티파트로 보냈으면 액션단에서도 getparameter가 아닌 멀티파트로 받아줘야함. -->
 						<div class="title_wrap">
 							<span class="view_content_title">게시글 제목</span>
 							<input type="text" class="board_title_input" id="title" name="title" placeholder="제목을 입력하세요">

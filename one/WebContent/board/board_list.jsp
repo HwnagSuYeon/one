@@ -93,9 +93,9 @@
 					<td><i class="fas fa-heart heart"></i>${bDto.goodcnt}</td>
 					<td><i class="far fa-user view_icon"></i>${bDto.viewcnt}</td>
 					<td>
-						<a href="#" class="files">
-							<i class="far fa-file file_icon"></i>
-						</a>
+						<c:if test="${bDto.filesize > 0}">
+							<i class="fas fa-paperclip file_icon"></i>
+						</c:if>
 					</td>
 				</tr>
 			</c:forEach>
