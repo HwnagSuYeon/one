@@ -41,14 +41,29 @@
 							 	fCreator: "createSEditor2"
 								});
 							</script>
-					<div class="add_file_wrap">
-						<input type="file" name="uploadfile" id="uploadfile"
-							style="display: none;"> <input id="add_file"
-							type="button" class="viewpage_btn add_file" value="파일첨부">
-						<span class="add_file_text" id="file_name">${one.filename}</span>
-						<span id="now_file_size"></span> <i class="fas fa-times "
-							id="close_file_btn" style="display: none;"></i>
-					</div>
+						<div class="add_file_wrap">
+							<span class="viewpage_btn" style="font-size: 15px; text-align: center;">첨부된파일</span>
+							<c:choose>
+								<c:when test="${one.filename=='-'}">
+									<span class="add_file_text" id="file_name_basic">첨부된 파일이 없습니다.</span>
+								</c:when>
+								<c:otherwise>
+									<span class="add_file_text basic_file_name" id="basic_file_name">${one.filename}</span>
+									<span id="now_file_size">(<fmt:formatNumber type="number" pattern="0.00" value="${one.filesize / 1024 /1024}"></fmt:formatNumber>mb)</span>
+									<i class="fas fa-times " id="close_file_btn"></i>
+									<span class="file_msg" style="color: tomato; margin-left: 8px; display: none;">[첨부파일 삭제됨]</span>
+								</c:otherwise>
+							</c:choose>
+						</div>
+						
+						<div class="add_file_wrap" >
+							<input type="file" name="uploadfile" id="uploadfile" style="display: none;">
+							<input id="add_file" type="button" class="viewpage_btn add_file" value="파일첨부">
+							<span class="add_file_text" id="file_name">첨부된 파일이 없습니다 </span>
+							<span id="now_file_size"></span>
+							<i class="fas fa-times " id="close_file_btn1" style="display:none;"></i>
+						</div>
+					
 
 					<div class="board_all_wrpa"></div>
 					<div class="viewpage_content">
@@ -135,20 +150,32 @@
 					$("#file_name").text(filename);
 					var formSize = size/(1024*1024);
 					$("#now_file_size").text("("+formSize.toFixed(2)+"mb)");
-					$("#close_file_btn").css("display", "block");
+					$("#close_file_btn1").css("display", "block");
 				}
 			}
 		});
 		
+	
 		
-		// 첨부파일 삭제 아이콘 누르면일어나는 일
+		
+		// 기존 삭제버튼 눌렀을 때 첨부파일 삭제 경고메세지
 		$(document).on('click', '#close_file_btn', function () {
+			$('.file_msg').css('display','block');
+			$('.basic_file_name').css('color','#F6F6F6')
+								 .css('text-decoration','line-throuh');
+			$('#now_file_size').css('color','#F6F6F6')
+							   .css('text-decoration','line-throuh');
+		});
+		
+		// 새로첨부파일하면 나타나는 X버튼
+		$(document).on('click', '#close_file_btn1', function () {
 			$('#uploadfile').replaceWith($('#uploadfile').clone(true)); /* 파일 다시선택해서 올라가게 만듦  */
 			$('#uploadfile').val("");
 			$('#now_file_size').text("");
 			$('#file_name').text("선택된 파일 없음"); 
 			$('#close_file_btn').css("display","none");
 		});
+		
 		
 		// 게시글 수정버튼 누르면 실제로 동작하는 곳으로이동
 		$(document).on('click', '.text_update', function () {

@@ -56,6 +56,7 @@
 							<c:when test="${one.filesize>0}">
 									<span class="add_file_text"> ${one.filename}
 										(<fmt:formatNumber type="number" pattern="0.00" value="${one.filesize / 1024 /1024}"></fmt:formatNumber>mb)
+										<i class="fas fa-times"></i>
 									</span>
 							</c:when>
 							<c:otherwise>
