@@ -60,6 +60,17 @@ public class BoardDTO {
 		this.content = content;
 		this.writer = writer;
 	}
+	
+
+	public BoardDTO(int bno, String title, String content, String writer, String filename, int filesize) {
+		super();
+		this.bno = bno;
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+		this.filename = filename;
+		this.filesize = filesize;
+	}
 
 
 	public int getBno() {

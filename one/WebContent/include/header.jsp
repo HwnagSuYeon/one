@@ -78,7 +78,7 @@
 					
 					<c:choose> 
 						<c:when test="${empty sessionScope.loginUser}"> 
-							<a href="#" class="nav_wrap">
+							<a class="nav_wrap" style="cursor: pointer;">
 								<div style="display: inline-block;">
 									<div class="nav_wrap_content">
 										<span class="open_modal">로그인</span>
@@ -103,7 +103,7 @@
 								<span class="nav_bar"></span>
 								<div style="display: inline-block;">
 									<div class="nav_wrap_content">
-										<a href="#" class="logout_btn">
+										<a class="logout_btn">
 											<span>로그아웃</span>
 										</a>
 									</div>

@@ -385,7 +385,7 @@ nav {
 	margin-right: 10px;
 }
 .add_file_text {
-	color: #dadada;
+	color: gray;
 	font-size: 15px;
 	line-height: 29px;
 }
@@ -460,7 +460,13 @@ nav {
 	color: gray;
 }
 #close_file_btn {
-	font-size: 15px;
+	font-size: 13px;
 	color: gray;
 	margin-top: 7px;
+}
+#check_btn {
+	font-size: 13px;
+	color: gray;
+	margin-top: 7px;
+	color: medeumseagreen;
 }

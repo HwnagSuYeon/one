@@ -159,16 +159,17 @@ public class BoardDAO {
 		return result;
 	}
 	
-	// 게시글 수정하기
-	public int boardUpdatePlay(BoardDTO bDto) {
+	// 게시글 수정기능
+	public int modify(BoardDTO bDto) {
 		sqlSession = sqlSessionFactory.openSession(true);
 		
 		try {
-			result = sqlSession.update("boardUpdate", bDto);
+			result = sqlSession.update("modifyBoard", bDto);
+			
 			if(result > 0) {
-				System.out.println("게시글 수정 성공 ");
+				System.out.println("게시글 수정 성공");
 			} else {
-				System.out.println("게시글 수정 실패 ");
+				System.out.println("게시글 수정 실패");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -177,4 +178,5 @@ public class BoardDAO {
 		}
 		return result;
 	}
+	
 }

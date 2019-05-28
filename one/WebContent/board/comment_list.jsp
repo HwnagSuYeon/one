@@ -58,7 +58,7 @@
 		</div>
 	</c:if>
 
-	<div class="login_area">
+	<div class="cmt_area">
 		<c:choose>
 			<c:when test="${empty sessionScope.loginUser}">
 				<div class="login_area_wrap"></div>

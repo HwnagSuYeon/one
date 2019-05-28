@@ -190,11 +190,12 @@
 		WHERE bno = #{bno}
 	</delete>
 	
-	<update id="boardUpdate" parameterType="com.one.dto.BoardDTO">
+	<update id="modifyBoard" parameterType="com.one.dto.BoardDTO">
 		UPDATE tbl_board
 		SET title = #{title},
 			content = #{content},
-			writer = #{writer}
+			filename = #{filename},
+			filesize = #{filesize}
 		WHERE bno = #{bno}
 	</update>
 </mapper>

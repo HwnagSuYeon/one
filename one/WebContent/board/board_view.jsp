@@ -56,7 +56,6 @@
 							<c:when test="${one.filesize>0}">
 									<span class="add_file_text"> ${one.filename}
 										(<fmt:formatNumber type="number" pattern="0.00" value="${one.filesize / 1024 /1024}"></fmt:formatNumber>mb)
-										<i class="fas fa-times"></i>
 									</span>
 							</c:when>
 							<c:otherwise>
@@ -114,6 +113,12 @@
 	<%@ include file="../include/footer.jsp" %>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script type="text/javascript">
+		// 브라우저의 뒤로가기 버튼을 눌렀을 때 내가 원하는 페이지로 이동하도록 만듦
+		history.pushState(null, document.title, location.href);
+		window.addEventListener('popstate', function (event) {
+			history.pushState(null, document.title, '<%=referer%>');
+			location.reload(); // 리프레쉬
+		});
 		// 댓글 삭제기능
 		$(document).on('click', '.cmt_delete', function () {
 			var rno = $(this).attr("data_num");
@@ -229,10 +234,18 @@
 			
 			// 게시판 목록 클릭 했을 때
 			$('.retun_go').click(function () {
-				location.href = "<%=referer%>";
+				location.href = '<%=referer%>';
 				// 바로 이전페이지값으로 url정보를 가져오는 것
 			});
 		});
+		
+		// 브라우저의 뒤로가기 버튼을 아예 막는 기능
+		/* history.pushState(null, null, location.href);
+		window.onpopstate = function () {
+			history.go(1);
+		}; */
+		
+		
 	</script>
 </body>
 </html>

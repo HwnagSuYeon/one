@@ -13,8 +13,8 @@ import com.one.action.Action;
 import com.one.action.ActionForward;
 import com.one.action.BoardDeleteAction;
 import com.one.action.BoardListAction;
+import com.one.action.BoardModifyAction;
 import com.one.action.BoardUpdateAction;
-import com.one.action.BoardUpdatePlayAction;
 import com.one.action.RegisterAjaxAction;
 import com.one.action.RegisterPlayAction;
 import com.one.action.RegisterViewAction;
@@ -147,10 +147,14 @@ public class FrontController extends HttpServlet {
 			} else if (command.equals("/boardUpdate.one")){
 				action = new BoardUpdateAction();
 				forward = action.excute(request, response);
+			} else if (command.equals("/boardModifyAction.one")){
+				action = new BoardModifyAction();
+				forward = action.excute(request, response);
 			} else if (command.equals("/download.one")){
 				action = new DownloadAction();
 				forward = action.excute(request, response);
 			}
+			
 			
 			
 			
