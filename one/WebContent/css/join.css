@@ -95,6 +95,7 @@ form {
 	border-radius: 4px;
 	color: white;
 	line-height: 23px;
+	background-color: #dadada;
 }
 .post_find:hover {
 	background-color: #f9c00c;
