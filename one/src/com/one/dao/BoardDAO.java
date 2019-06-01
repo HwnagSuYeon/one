@@ -178,5 +178,36 @@ public class BoardDAO {
 		}
 		return result;
 	}
+
+	// 해당 게시글에 좋아요 총 갯수를 세는 역할 
+	public int likeCnt(int bno) {
+		sqlSession = sqlSessionFactory.openSession();
+		
+		try {
+			result = sqlSession.selectOne("selectLike", bno);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return result;
+	}
+
+	// tbl_board안에 good_cnt정보를수정 (-1, +1)
+	public int updateLikeCnt(int like_cnt, int bno) {
+		sqlSession = sqlSessionFactory.openSession();
+		BoardDTO bDto = new BoardDTO();
+		bDto.setBno(bno);
+		bDto.setGoodcnt(like_cnt);
+		
+		try {
+			result = sqlSession.update("updateLikeCnt", bDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return result;
+	}
 	
 }

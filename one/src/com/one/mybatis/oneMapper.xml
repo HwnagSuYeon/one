@@ -198,4 +198,27 @@
 			filesize = #{filesize}
 		WHERE bno = #{bno}
 	</update>
+	<select id="ckeckLike" parameterType="com.one.dto.LikeDTO" resultType="com.one.dto.LikeDTO">
+		SELECT * FROM tbl_like
+		WHERE bno = #{bno}
+		AND	  id = #{id}
+	</select>
+	<insert id="insertLike" parameterType="com.one.dto.LikeDTO">
+		INSERT INTO tbl_like(bno, id)
+		VALUES(#{bno}, #{id})
+	</insert>
+	<delete id="deleteLike" parameterType="com.one.dto.LikeDTO">
+		DELETE FROM tbl_like
+		WHERE bno = #{bno}
+		AND	  id = #{id}
+	</delete>
+	<select id="selectLike" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM tbl_like
+		WHERE bno = #{bno}
+	</select>
+	<update id="updateLikeCnt" parameterType="com.one.dto.BoardDTO">
+		UPDATE tbl_board
+		SET goodcnt = #{goodcnt}
+		WHERE bno = #{bno}
+	</update>
 </mapper>

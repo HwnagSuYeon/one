@@ -19,6 +19,7 @@ import com.one.action.RegisterAjaxAction;
 import com.one.action.RegisterPlayAction;
 import com.one.action.RegisterViewAction;
 import com.one.action.BoardViewAction;
+import com.one.action.CheckLikeAjaxAction;
 import com.one.action.CommentListAction;
 import com.one.action.ConstractAction;
 import com.one.action.DownloadAction;
@@ -38,6 +39,7 @@ import com.one.action.PwUpdateAction;
 import com.one.action.PwUpdatePlayAction;
 import com.one.action.ReplyAddAction;
 import com.one.action.ReplyRemoveAction;
+import com.one.action.SwitchLikeAjaxAction;
 
 
 
@@ -153,12 +155,13 @@ public class FrontController extends HttpServlet {
 			} else if (command.equals("/download.one")){
 				action = new DownloadAction();
 				forward = action.excute(request, response);
+			} else if (command.equals("/check_like.one")){
+				action = new CheckLikeAjaxAction();
+				forward = action.excute(request, response);
+			} else if (command.equals("/switch_like.one")){
+				action = new SwitchLikeAjaxAction();
+				forward = action.excute(request, response);
 			}
-			
-			
-			
-			
-			
 			
 			
 			

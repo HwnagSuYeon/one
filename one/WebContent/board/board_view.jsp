@@ -86,7 +86,10 @@
 								</c:choose>
 							</span>
 							<span class="date"><i class="fas fa-sort-amount-up"></i> ${one.bno}번째 게시글</span>
-							<span class="view_heart"><i class="far fa-heart"></i> ${one.goodcnt}</span>
+							<span class="view_heart">
+								<i class="far fa-heart"></i>
+								<span id="goodCnt">${one.goodcnt}</span>
+							</span>
 							<span class="view"><i class="far fa-user"></i> ${one.viewcnt}</span>
 							<span class="comment_btn"><i class="far fa-comment-dots" style="color: white;"></i><a href="#"> 댓글쓰기</a></span>
 							<span class="comment_btn retun_go"><a href="#"> 게시글목록</a></span>
@@ -207,19 +210,65 @@
 			// 문서가 준비되면 댓글 목록을 조회하는 ajax 실행
 			comment_list();
 			
+			if(${empty sessionScope.loginUser.id}){
+				check_like();
+			}
 			
 			// 좋아요 줬다 뺐었다
 			$('.like_befor').click(function (){
-				$(this).css("display", "none");
-				$('.like_after').css("display","inline-block")
-				.css("color", "salmon")
-				.css("transition", ".3s");
+				like_switch();
+				check_like();
 			});
 			$('.like_after').click(function (){
-				$(this).css("display", "none");
-				$('.like_befor').css("display","inline-block")
-				.css("transition", ".3s");;
+				like_switch();
+				check_like();
 			});
+			
+			// 세션정보의 id와 좋아요 정보 대조
+			// 만약 없으면 좋아요 누를 수 있게
+			// 있으면 좋아요 누를수 없게 
+			
+			
+			// 실질적 좋아요를 줬다가 뺏는 기능을 DB에 반영하는 ajax문 
+			// 좋아요를 준 기록이 있으면 DELETE
+			// 좋아요를 준 기록 없으면 INSERT
+			// tbl_board의 good_cnt개수 조정되도록
+			function like_switch() {
+				var bno = "${one.bno}";
+				
+				$.ajax({
+					type: "post",
+					url: "switch_like.one?bno="+bno,
+					dataType: "json", // 받아올 데이터 포맷방
+					async: false,
+					success: function(result) {
+					}
+				});
+			}
+			
+			function check_like() {
+				var bno = "${one.bno}";
+				
+				$.ajax({
+					type: "post",
+					url: "check_like.one?bno="+bno,
+					dataType: "json", // 받아올 데이터 포맷방
+					async: false,
+					success: function(result) {
+						if(result.result == "0") {
+							$('.like_after').css("display", "none");
+							$('.like_befor').css("display","inline-block")
+											.css("transition", ".3s");
+						} else {
+							$('.like_befor').css("display", "none");
+							$('.like_after').css("display","inline-block")
+											.css("color", "salmon")
+											.css("transition", ".3s");
+						}
+						$('#goodCnt').text(result.likeCnt);
+					}
+				});
+			}
 			
 			// 모달창 기능
 			$('.text_delete').click(function(){
